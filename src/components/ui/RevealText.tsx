@@ -11,14 +11,12 @@ export function RevealText({
   delay = 0,
   stagger = 0.045,
   as: Tag = "span",
-  gradient = false,
 }: {
   text: string;
   className?: string;
   delay?: number;
   stagger?: number;
   as?: "span" | "h1" | "h2" | "p";
-  gradient?: boolean;
 }) {
   const words = text.split(" ");
 
@@ -30,12 +28,12 @@ export function RevealText({
           <Fragment key={i}>
             <span className="inline-block overflow-hidden pb-[0.15em] align-bottom">
               <motion.span
-                className={`inline-block will-change-transform ${gradient ? "gradient-text" : ""}`}
-                initial={{ y: "110%", rotate: 4 }}
+                className="inline-block will-change-transform"
+                initial={{ y: "110%", rotate: 2 }}
                 whileInView={{ y: "0%", rotate: 0 }}
                 viewport={{ once: true, amount: 0 }}
                 transition={{
-                  duration: 0.9,
+                  duration: 0.85,
                   delay: delay + i * stagger,
                   ease: EASE,
                 }}

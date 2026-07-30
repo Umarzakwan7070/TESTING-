@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus } from "lucide-react";
 import { FadeIn } from "./ui/FadeIn";
 
 const FAQS = [
@@ -31,18 +30,18 @@ const FAQS = [
 function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
   return (
-    <FadeIn delay={index * 0.05} className="border-b border-white/8">
+    <FadeIn delay={index * 0.05} className="border-b border-line">
       <button
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center justify-between gap-6 py-6 text-left"
       >
-        <span className="text-[16px] font-medium text-white">{q}</span>
+        <span className="font-display text-[17px] italic text-paper">{q}</span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/70"
+          className="flex h-7 w-7 shrink-0 items-center justify-center border border-line font-mono text-[16px] text-brass"
         >
-          <Plus className="h-3.5 w-3.5" />
+          +
         </motion.span>
       </button>
       <AnimatePresence initial={false}>
@@ -54,7 +53,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-6 pr-10 text-[14.5px] leading-relaxed text-white/55">{a}</p>
+            <p className="pb-6 pr-10 text-[14.5px] leading-relaxed text-paper-dim">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -67,10 +66,8 @@ export default function FAQ() {
     <section id="faq" className="relative py-28">
       <div className="mx-auto max-w-3xl px-6">
         <FadeIn className="text-center">
-          <span className="text-[13px] font-medium uppercase tracking-[0.2em] text-[var(--accent-1)]">
-            FAQ
-          </span>
-          <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <span className="font-mono-label text-[11px] text-blueprint">Spec — 06 / FAQ</span>
+          <h2 className="mt-4 text-balance font-display text-4xl italic text-paper sm:text-5xl">
             Questions, answered
           </h2>
         </FadeIn>

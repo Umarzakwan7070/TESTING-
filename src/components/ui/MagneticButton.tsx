@@ -28,8 +28,8 @@ export function MagneticButton({
     if (!rect) return;
     const relX = e.clientX - rect.left - rect.width / 2;
     const relY = e.clientY - rect.top - rect.height / 2;
-    x.set(relX * 0.35);
-    y.set(relY * 0.5);
+    x.set(relX * 0.3);
+    y.set(relY * 0.4);
   }
 
   function handleMouseLeave() {
@@ -38,11 +38,11 @@ export function MagneticButton({
   }
 
   const base =
-    "relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-medium transition-colors duration-300 will-change-transform";
+    "relative inline-flex items-center justify-center gap-2 rounded-[4px] px-7 py-3.5 font-mono-label text-[12px] transition-colors duration-300 will-change-transform";
   const styles =
     variant === "primary"
-      ? "bg-white text-black hover:bg-white/90"
-      : "glass text-white hover:bg-white/10";
+      ? "bg-brass text-ink hover:bg-brass-bright"
+      : "border border-line text-paper hover:border-brass hover:text-brass";
 
   const Content = (
     <motion.div
