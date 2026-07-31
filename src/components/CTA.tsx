@@ -3,7 +3,6 @@
 import { ShieldCheck } from "lucide-react";
 import { FadeIn } from "./ui/FadeIn";
 import { MagneticButton } from "./ui/MagneticButton";
-import { WaveDivider } from "./ui/WaveDivider";
 
 export default function CTA() {
   return (
@@ -15,8 +14,7 @@ export default function CTA() {
         </div>
 
         <FadeIn className="cta-panel overflow-hidden rounded-[32px] text-center">
-          <WaveDivider fill="var(--foam)" className="!h-10" />
-          <div className="px-8 pb-16 pt-4 sm:px-16 sm:pb-20">
+          <div className="px-8 pb-16 pt-14 sm:px-16 sm:pb-20 sm:pt-16">
             <h2 className="text-balance font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">
               Stop losing customers to a website that undersells you.
             </h2>
