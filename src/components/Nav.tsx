@@ -1,16 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { MagneticButton } from "./ui/MagneticButton";
 
 const LINKS = [
-  { href: "#work", label: "Work" },
-  { href: "#services", label: "Services" },
-  { href: "#process", label: "Process" },
-  { href: "#about", label: "About" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#work", label: "Work" },
+  { href: "/#services", label: "Services" },
+  { href: "/#process", label: "Process" },
+  { href: "/#about", label: "About" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/assessment", label: "Free Assessment" },
 ];
 
 export default function Nav() {
@@ -39,24 +41,24 @@ export default function Nav() {
           scrolled ? "border-b border-line bg-foam/85 backdrop-blur-md" : "border-b border-transparent"
         }`}
       >
-        <a href="#top" className="font-display text-[18px] font-bold text-ink">
+        <Link href="/#top" className="font-display text-[18px] font-bold text-ink">
           SurfingLeads
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-1 rounded-full border border-line bg-white/70 p-1.5 backdrop-blur-sm md:flex">
           {LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="rounded-full px-4 py-2 text-[14px] font-bold text-ink-dim transition-colors hover:bg-ink/5 hover:text-ink"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="hidden md:block">
-          <MagneticButton href="#contact" className="!px-5 !py-2 !text-[14px]">
+          <MagneticButton href="/#contact" className="!px-5 !py-2 !text-[14px]">
             Get a quote
           </MagneticButton>
         </div>
@@ -93,22 +95,22 @@ export default function Nav() {
             className="card absolute inset-x-3 top-[4rem] flex flex-col gap-1 p-3 md:hidden"
           >
             {LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="rounded-xl px-4 py-3 text-[15px] font-bold text-ink-dim transition-colors hover:bg-ink/5 hover:text-ink"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               onClick={() => setOpen(false)}
               className="mt-2 rounded-xl bg-ocean px-4 py-3 text-center text-[15px] font-bold text-white"
             >
               Get a quote
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

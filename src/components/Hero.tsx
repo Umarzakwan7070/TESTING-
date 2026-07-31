@@ -58,9 +58,10 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.65, ease: EASE }}
           className="mx-auto mt-7 max-w-lg text-balance text-center text-[16.5px] leading-relaxed text-ink-dim sm:text-lg"
         >
-          You&apos;ve built something real. Your website should prove it, not
-          undersell it. I design landing pages and marketing sites
-          entrepreneurs are actually proud to send people to.
+          You&apos;re working harder than ever, but the growth isn&apos;t
+          matching the effort. It&apos;s not your business — it&apos;s that
+          nobody online can tell how good you actually are. I build sites
+          that finally show it.
         </motion.p>
 
         <motion.div
