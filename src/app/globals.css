@@ -95,6 +95,26 @@ h3,
   pointer-events: none;
 }
 
+.cta-panel {
+  position: relative;
+  background:
+    radial-gradient(120% 90% at 22% -10%, rgba(255, 255, 255, 0.22), transparent 55%),
+    linear-gradient(165deg, var(--ocean) 0%, var(--ocean-deep) 55%, var(--ocean-night) 100%);
+  box-shadow:
+    0 28px 64px -18px rgba(6, 49, 61, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.cta-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 45%);
+  pointer-events: none;
+}
+
 @keyframes wave-drift {
   from {
     transform: translateX(0);

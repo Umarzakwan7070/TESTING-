@@ -8,8 +8,13 @@ import { WaveDivider } from "./ui/WaveDivider";
 export default function CTA() {
   return (
     <section id="contact" className="relative bg-foam pt-4 pb-24">
-      <div className="mx-auto max-w-5xl px-6">
-        <FadeIn className="overflow-hidden rounded-[32px] bg-gradient-to-b from-ocean to-ocean-night text-center">
+      <div className="relative mx-auto max-w-5xl px-6">
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute left-[6%] top-4 h-56 w-56 rounded-full bg-ocean/25 blur-3xl" />
+          <div className="absolute right-[8%] bottom-0 h-56 w-56 rounded-full bg-sun/20 blur-3xl" />
+        </div>
+
+        <FadeIn className="cta-panel overflow-hidden rounded-[32px] text-center">
           <WaveDivider fill="var(--foam)" className="!h-10" />
           <div className="px-8 pb-16 pt-4 sm:px-16 sm:pb-20">
             <h2 className="text-balance font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">
@@ -22,7 +27,7 @@ export default function CTA() {
             <div className="mt-9 flex flex-col items-center justify-center gap-4">
               <MagneticButton
                 href="mailto:hello@surfingleads.co"
-                className="!bg-sun !text-ink"
+                className="!bg-sun !text-ink !shadow-lg !shadow-sun/40"
               >
                 Book a free call
               </MagneticButton>
