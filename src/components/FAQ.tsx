@@ -31,8 +31,8 @@ const FAQS = [
     a: "Yes. Copywriting is included in every plan. You can also bring your own draft and I'll refine it for conversion.",
   },
   {
-    q: "Do you build sites for real estate agencies?",
-    a: "Yes — a dedicated Real Estate plan starting at $1,499. It showcases what you have for sale or rent with photos and details, and lets buyers or renters filter and get in touch. The deal itself always happens face-to-face between you and the client — the site never processes payments or bookings.",
+    q: "I have a catalog/listings-style business (real estate, rentals, etc.) — can you build for that?",
+    a: "Yes — that's the Custom Website plan, starting at $1,499. It's built around whatever you're showcasing (properties, rentals, services, inventory) with photos, details, and search or filtering. Customers browse and send an inquiry, but the deal itself always closes face-to-face between you and them — the site never processes payments or bookings.",
   },
 ];
 
