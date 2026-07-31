@@ -19,16 +19,16 @@ export default function CTA() {
               Book a free 20-minute call. I&apos;ll tell you honestly whether a
               landing page or a full website is the right fit for you.
             </p>
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-9 flex flex-col items-center justify-center gap-4">
               <MagneticButton
                 href="mailto:hello@surfingleads.co"
                 className="!bg-sun !text-ink"
               >
                 Book a free call
               </MagneticButton>
-              <MagneticButton href="#pricing" className="!bg-white/15 !text-white hover:!bg-white/25">
+              <a href="#pricing" className="text-[13.5px] font-bold text-white/70 transition-colors hover:text-white">
                 View pricing
-              </MagneticButton>
+              </a>
             </div>
 
             <p className="mt-6 flex items-center justify-center gap-1.5 text-[13px] font-bold text-white/70">
