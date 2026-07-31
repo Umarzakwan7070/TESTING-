@@ -2,20 +2,25 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Plus } from "lucide-react";
 import { FadeIn } from "./ui/FadeIn";
 
 const FAQS = [
   {
+    q: "You're new — why should I trust you with this?",
+    a: "Fair question. I don't have a long client list yet, which is exactly why founding clients get a lower price and my full, undivided attention — you're not one of fifty accounts on a dashboard. If it's not working out early on, we talk and fix it together.",
+  },
+  {
     q: "How fast can you actually deliver?",
-    a: "Most single-page projects go from kickoff call to live page in 5–7 days. Larger, multi-page or integration-heavy builds take a bit longer — we'll give you an exact timeline on the discovery call.",
+    a: "Most single-page projects go from kickoff call to live page in 5–7 days. Larger, multi-page or integration-heavy builds take a bit longer — I'll give you an exact timeline on the discovery call.",
   },
   {
     q: "Do you write the copy too?",
-    a: "Yes. Copywriting is included in every plan. You can also bring your own draft and we'll refine it for conversion.",
+    a: "Yes. Copywriting is included in every plan. You can also bring your own draft and I'll refine it for conversion.",
   },
   {
     q: "What platforms do you build on?",
-    a: "We hand-code with modern frameworks for speed and flexibility, and can also build on Webflow or Framer if that fits your team better.",
+    a: "I hand-code with modern frameworks for speed and flexibility, and can also build on Webflow or Framer if that fits your team better.",
   },
   {
     q: "Can you connect it to my CRM or email tool?",
@@ -30,18 +35,18 @@ const FAQS = [
 function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
   return (
-    <FadeIn delay={index * 0.05} className="border-b border-line">
+    <FadeIn delay={index * 0.05} className="border-b border-white/8">
       <button
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center justify-between gap-6 py-6 text-left"
       >
-        <span className="font-display text-[17px] italic text-paper">{q}</span>
+        <span className="text-[16px] font-medium text-white">{q}</span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="flex h-7 w-7 shrink-0 items-center justify-center border border-line font-mono text-[16px] text-brass"
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/70"
         >
-          +
+          <Plus className="h-3.5 w-3.5" />
         </motion.span>
       </button>
       <AnimatePresence initial={false}>
@@ -53,7 +58,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-6 pr-10 text-[14.5px] leading-relaxed text-paper-dim">{a}</p>
+            <p className="pb-6 pr-10 text-[14.5px] leading-relaxed text-white/55">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -66,8 +71,10 @@ export default function FAQ() {
     <section id="faq" className="relative py-28">
       <div className="mx-auto max-w-3xl px-6">
         <FadeIn className="text-center">
-          <span className="font-mono-label text-[11px] text-blueprint">Spec — 06 / FAQ</span>
-          <h2 className="mt-4 text-balance font-display text-4xl italic text-paper sm:text-5xl">
+          <span className="text-[13px] font-medium uppercase tracking-[0.2em] text-accent">
+            FAQ
+          </span>
+          <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
             Questions, answered
           </h2>
         </FadeIn>

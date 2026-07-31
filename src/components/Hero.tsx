@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { RevealText } from "./ui/RevealText";
 import { MarkedText } from "./ui/MarkedText";
 import { MagneticButton } from "./ui/MagneticButton";
-import { BlueprintField } from "./ui/BlueprintField";
+import { AuroraField } from "./ui/AuroraField";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -22,30 +22,28 @@ export default function Hero() {
 
   return (
     <section id="top" ref={ref} className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-20">
-      <BlueprintField />
+      <AuroraField />
 
-      <motion.div style={{ y, opacity, scale }} className="relative z-10 mx-auto w-full max-w-5xl px-6">
+      <motion.div style={{ y, opacity, scale }} className="relative z-10 mx-auto w-full max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE }}
-          className="mx-auto mb-10 flex w-fit items-center gap-3 border border-line px-4 py-1.5"
+          className="glass mx-auto mb-8 flex w-fit items-center gap-2 rounded-full px-4 py-1.5 text-[13px] font-medium text-white/70"
         >
           <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-pulse-soft rounded-full bg-brass" />
+            <span className="absolute inline-flex h-full w-full animate-pulse-soft rounded-full bg-accent" />
           </span>
-          <span className="font-mono-label text-[11px] text-paper-dim">
-            Status — accepting 3 new briefs for August
-          </span>
+          New studio — founding-client pricing while I build my portfolio
         </motion.div>
 
-        <h1 className="text-balance text-center font-display font-normal italic leading-[1.02] text-paper">
+        <h1 className="text-balance text-center font-semibold leading-[0.95] tracking-tight text-white">
           <RevealText
             as="span"
             text="Landing pages that turn"
-            className="block text-[11vw] sm:text-[7vw] lg:text-[4.8rem]"
+            className="block text-[13vw] sm:text-[8vw] lg:text-[5.2rem]"
           />
-          <span className="block text-[11vw] sm:text-[7vw] lg:text-[4.8rem]">
+          <span className="block text-[13vw] sm:text-[8vw] lg:text-[5.2rem]">
             <RevealText as="span" text="strangers into" delay={0.32} />{" "}
             <MarkedText delay={1.1}>
               <RevealText as="span" text="leads." delay={0.32} stagger={0.06} />
@@ -57,10 +55,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.7, ease: EASE }}
-          className="mx-auto mt-8 max-w-xl text-balance text-center text-[16.5px] leading-relaxed text-paper-dim sm:text-lg"
+          className="mx-auto mt-7 max-w-xl text-balance text-center text-[17px] leading-relaxed text-white/60 sm:text-lg"
         >
-          We draft the structure and redline the words until your page does
-          one job well: turning visitors into qualified leads.
+          I design, write, and build premium landing pages for founders and
+          entrepreneurs — so every visitor becomes a lead, not a bounce.
         </motion.p>
 
         <motion.div
@@ -76,7 +74,7 @@ export default function Hero() {
             </svg>
           </MagneticButton>
           <MagneticButton href="#work" variant="secondary">
-            See recent work
+            See example work
           </MagneticButton>
         </motion.div>
       </motion.div>
@@ -84,15 +82,15 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 1 }}
+        transition={{ delay: 1.4, duration: 1 }}
         className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex h-9 w-6 items-start justify-center rounded-full border border-line p-1.5"
+          className="flex h-9 w-6 items-start justify-center rounded-full border border-white/20 p-1.5"
         >
-          <div className="h-1.5 w-1 rounded-full bg-brass" />
+          <div className="h-1.5 w-1 rounded-full bg-accent" />
         </motion.div>
       </motion.div>
     </section>

@@ -5,9 +5,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { FadeIn } from "./ui/FadeIn";
 
 const MOCKS = [
-  { label: "Coaching offer" },
-  { label: "SaaS waitlist" },
-  { label: "Local service biz" },
+  { label: "Coaching offer — concept" },
+  { label: "SaaS waitlist — concept" },
+  { label: "Local service biz — concept" },
 ];
 
 function BrowserMock({ label, tilt }: { label: string; tilt: number }) {
@@ -16,26 +16,24 @@ function BrowserMock({ label, tilt }: { label: string; tilt: number }) {
       style={{ rotate: tilt }}
       whileHover={{ rotate: 0, y: -10 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="panel w-full max-w-sm shrink-0 overflow-hidden"
+      className="glass w-full max-w-sm shrink-0 overflow-hidden rounded-2xl shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)]"
     >
-      <div className="flex items-center gap-1.5 border-b border-line px-4 py-3">
-        <span className="h-2 w-2 border border-line" />
-        <span className="h-2 w-2 border border-line" />
-        <span className="h-2 w-2 border border-line" />
-        <span className="ml-auto font-mono-label text-[9px] text-line">Preview</span>
+      <div className="flex items-center gap-1.5 border-b border-white/8 px-4 py-3">
+        <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+        <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+        <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
       </div>
-      <div className="relative h-56 bg-paper/[0.04] p-6">
-        <div className="absolute left-0 top-0 h-full w-1 bg-brass" />
-        <div className="h-2.5 w-2/3 bg-paper/70" />
-        <div className="mt-3 h-2 w-1/2 bg-paper/30" />
-        <div className="mt-8 h-8 w-28 border border-brass" />
+      <div className="relative h-56 bg-gradient-to-br from-accent/25 to-accent/5 p-6">
+        <div className="h-2.5 w-2/3 rounded-full bg-white/50" />
+        <div className="mt-3 h-2 w-1/2 rounded-full bg-white/30" />
+        <div className="mt-8 h-8 w-28 rounded-full bg-accent" />
         <div className="mt-6 grid grid-cols-3 gap-2">
-          <div className="h-10 border border-line" />
-          <div className="h-10 border border-line" />
-          <div className="h-10 border border-line" />
+          <div className="h-10 rounded-lg bg-white/10" />
+          <div className="h-10 rounded-lg bg-white/10" />
+          <div className="h-10 rounded-lg bg-white/10" />
         </div>
       </div>
-      <div className="px-4 py-3 font-mono-label text-[11px] text-paper-dim">{label}</div>
+      <div className="px-4 py-3 text-[13px] font-medium text-white/70">{label}</div>
     </motion.div>
   );
 }
@@ -52,20 +50,23 @@ export default function Showcase() {
     <section id="work" ref={ref} className="relative overflow-hidden py-28">
       <div className="mx-auto max-w-6xl px-6">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <span className="font-mono-label text-[11px] text-blueprint">Spec — 03 / Recent work</span>
-          <h2 className="mt-4 text-balance font-display text-4xl italic text-paper sm:text-5xl">
-            Built for founders, not template shoppers
+          <span className="text-[13px] font-medium uppercase tracking-[0.2em] text-accent">
+            Example work
+          </span>
+          <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            The kind of page I build
           </h2>
-          <p className="mt-4 text-balance text-[16.5px] leading-relaxed text-paper-dim">
-            A sample of the structures we build — every project is fully
-            custom to your brand and offer.
+          <p className="mt-4 text-balance text-[17px] leading-relaxed text-white/55">
+            I&apos;m a new studio, so these are concept layouts showing the
+            style and structure I build — your project would be fully custom
+            to your brand and offer.
           </p>
         </FadeIn>
 
         <div className="mt-20 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:items-start">
           {MOCKS.map((m, i) => (
             <motion.div key={m.label} style={{ y: yValues[i] }} className="flex justify-center">
-              <BrowserMock label={m.label} tilt={i % 2 === 0 ? -2 : 2} />
+              <BrowserMock label={m.label} tilt={i % 2 === 0 ? -3 : 3} />
             </motion.div>
           ))}
         </div>

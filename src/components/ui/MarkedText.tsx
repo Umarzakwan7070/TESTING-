@@ -13,29 +13,15 @@ export function MarkedText({
   className?: string;
 }) {
   return (
-    <span className={`relative inline-block ${className}`}>
+    <span className={`relative inline-block text-accent ${className}`}>
       {children}
-      <motion.svg
-        viewBox="0 0 340 18"
-        preserveAspectRatio="none"
-        className="pointer-events-none absolute -bottom-[0.16em] left-0 h-[0.28em] w-full text-brass"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+      <motion.span
+        className="pointer-events-none absolute -bottom-[0.1em] left-0 h-[3px] w-full origin-left rounded-full bg-accent"
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 0.9 }}
         viewport={{ once: true, amount: 0 }}
-        transition={{ duration: 0.2, delay }}
-      >
-        <motion.path
-          d="M2 12.5C58 6 121 4 171 8C221 12 283 6 338 9.5"
-          stroke="currentColor"
-          strokeWidth="7"
-          strokeLinecap="round"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={{ once: true, amount: 0 }}
-          transition={{ duration: 0.7, delay, ease: [0.65, 0, 0.35, 1] }}
-        />
-      </motion.svg>
+        transition={{ duration: 0.8, delay, ease: [0.65, 0, 0.35, 1] }}
+      />
     </span>
   );
 }
