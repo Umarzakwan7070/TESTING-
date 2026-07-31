@@ -7,19 +7,19 @@ import { AuroraField } from "./ui/AuroraField";
 
 export default function CTA() {
   return (
-    <section id="contact" className="relative overflow-hidden py-32">
+    <section id="contact" className="relative overflow-hidden py-28">
       <AuroraField className="opacity-70" />
-      <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+      <div className="relative z-10 mx-auto max-w-2xl px-6 text-center">
         <FadeIn>
-          <h2 className="text-balance text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-            Let&apos;s build the page that{" "}
-            <MarkedText>turns visitors into leads.</MarkedText>
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-label sm:text-5xl">
+            Let&apos;s build the site that{" "}
+            <MarkedText>turns visitors into customers.</MarkedText>
           </h2>
-          <p className="mx-auto mt-6 max-w-lg text-balance text-[17px] leading-relaxed text-white/55">
+          <p className="mx-auto mt-5 max-w-md text-balance text-[16px] leading-relaxed text-label-secondary">
             Book a free 20-minute call. I&apos;ll tell you honestly whether a
-            new landing page will move the needle for your business.
+            landing page or a full website is the right fit for you.
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <MagneticButton href="mailto:hello@launchframe.co">
               Book a free call
             </MagneticButton>

@@ -29,27 +29,27 @@ export default function Nav() {
     <motion.header
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4"
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-x-0 top-0 z-50"
     >
       <div
-        className={`flex w-full max-w-6xl items-center justify-between rounded-full px-5 py-2.5 transition-all duration-500 ${
-          scrolled ? "glass shadow-[0_8px_30px_rgba(0,0,0,0.35)]" : "border border-transparent bg-transparent"
+        className={`flex w-full items-center justify-between px-5 py-3 transition-all duration-300 md:px-8 ${
+          scrolled ? "nav-blur border-b border-separator" : "border-b border-transparent"
         }`}
       >
-        <a href="#top" className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-white">
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#04150c]" />
+        <a href="#top" className="flex items-center gap-2 text-[16px] font-semibold tracking-tight text-label">
+          <span className="flex h-7 w-7 items-center justify-center rounded-[9px] bg-accent">
+            <span className="h-2.5 w-2.5 rounded-full bg-white" />
           </span>
           Launchframe
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-[13.5px] font-medium text-white/60 transition-colors hover:text-white"
+              className="text-[14px] font-medium text-label-secondary transition-colors hover:text-label"
             >
               {link.label}
             </a>
@@ -57,28 +57,28 @@ export default function Nav() {
         </nav>
 
         <div className="hidden md:block">
-          <MagneticButton href="#contact" className="!px-5 !py-2 !text-[13.5px]">
-            Book a call
+          <MagneticButton href="#contact" className="!px-5 !py-2 !text-[14px]">
+            Get a quote
           </MagneticButton>
         </div>
 
         <button
           onClick={() => setOpen((o) => !o)}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-white md:hidden"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-label md:hidden"
           aria-label="Toggle menu"
         >
           <div className="relative h-4 w-5">
             <motion.span
               animate={{ rotate: open ? 45 : 0, top: open ? "50%" : "0%" }}
-              className="absolute left-0 top-0 h-[1.5px] w-full bg-white"
+              className="absolute left-0 top-0 h-[1.5px] w-full bg-label"
             />
             <motion.span
               animate={{ opacity: open ? 0 : 1 }}
-              className="absolute left-0 top-1/2 h-[1.5px] w-full -translate-y-1/2 bg-white"
+              className="absolute left-0 top-1/2 h-[1.5px] w-full -translate-y-1/2 bg-label"
             />
             <motion.span
               animate={{ rotate: open ? -45 : 0, bottom: open ? "50%" : "0%" }}
-              className="absolute left-0 bottom-0 h-[1.5px] w-full bg-white"
+              className="absolute left-0 bottom-0 h-[1.5px] w-full bg-label"
             />
           </div>
         </button>
@@ -90,15 +90,15 @@ export default function Nav() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-x-4 top-[4.5rem] flex flex-col gap-1 rounded-3xl border border-white/10 bg-[#0a0a0d]/95 p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] backdrop-blur-2xl md:hidden"
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="card absolute inset-x-3 top-[4rem] flex flex-col gap-1 p-3 md:hidden"
           >
             {LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-4 py-3 text-[15px] font-medium text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+                className="rounded-xl px-4 py-3 text-[15px] font-medium text-label-secondary transition-colors hover:bg-black/5 hover:text-label"
               >
                 {link.label}
               </a>
@@ -106,9 +106,9 @@ export default function Nav() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-xl bg-accent px-4 py-3 text-center text-[15px] font-semibold text-[#04150c]"
+              className="mt-2 rounded-xl bg-accent px-4 py-3 text-center text-[15px] font-semibold text-white"
             >
-              Book a call
+              Get a quote
             </a>
           </motion.div>
         )}

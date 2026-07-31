@@ -1,86 +1,42 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { FadeIn } from "./ui/FadeIn";
+import { FadeIn, Stagger, StaggerItem } from "./ui/FadeIn";
 
 const STEPS = [
-  {
-    n: "01",
-    title: "Discovery call",
-    desc: "30 minutes on your offer, audience, and what a qualified lead looks like for you.",
-  },
-  {
-    n: "02",
-    title: "Design & copy",
-    desc: "I design a premium, on-brand page and write copy built to move visitors to act.",
-  },
-  {
-    n: "03",
-    title: "Build & integrate",
-    desc: "Hand-coded, fast, and connected to your CRM, email tool, or booking calendar.",
-  },
-  {
-    n: "04",
-    title: "Launch & optimize",
-    desc: "I track performance and run iterations so conversion keeps climbing after launch.",
-  },
+  { n: "1", title: "Discovery call", desc: "30 minutes on your business, audience, and what a qualified lead looks like for you." },
+  { n: "2", title: "Design & copy", desc: "I design a clean, on-brand page or site and write copy built to move visitors to act." },
+  { n: "3", title: "Build & connect", desc: "Hand-built, fast, and connected to your CRM, email tool, or booking calendar." },
+  { n: "4", title: "Launch", desc: "Your site goes live. For websites, hosting is free for the first 3 months." },
 ];
 
 export default function Process() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 0.75", "end 0.4"],
-  });
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
   return (
-    <section id="process" className="relative py-28">
-      <div className="mx-auto max-w-5xl px-6">
-        <FadeIn className="mx-auto max-w-2xl text-center">
-          <span className="text-[13px] font-medium uppercase tracking-[0.2em] text-accent">
+    <section id="process" className="relative py-24">
+      <div className="mx-auto max-w-2xl px-6">
+        <FadeIn className="text-center">
+          <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-accent">
             How it works
           </span>
-          <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            From kickoff to launch in days, not months
+          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-label sm:text-4xl">
+            From kickoff to launch in days
           </h2>
         </FadeIn>
 
-        <div ref={ref} className="relative mt-20">
-          <div className="absolute left-[27px] top-0 h-full w-px bg-white/8 md:left-1/2" />
-          <motion.div
-            style={{ height: lineHeight }}
-            className="absolute left-[27px] top-0 w-px bg-accent md:left-1/2"
-          />
-
-          <div className="flex flex-col gap-14">
-            {STEPS.map((step, i) => (
-              <div
-                key={step.n}
-                className={`relative flex items-start gap-6 md:gap-0 ${
-                  i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-white/10 bg-background text-sm font-semibold text-white">
+        <Stagger className="mt-12 flex flex-col gap-3">
+          {STEPS.map((step) => (
+            <StaggerItem key={step.n}>
+              <div className="card flex items-start gap-4 p-5">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent text-[15px] font-bold text-white">
                   {step.n}
                 </div>
-
-                <FadeIn
-                  y={20}
-                  className={`flex-1 ${i % 2 === 0 ? "md:pl-12" : "md:pr-12 md:text-right"}`}
-                >
-                  <div className="glass inline-block w-full rounded-2xl p-6 md:w-auto md:min-w-[22rem]">
-                    <h3 className="text-lg font-medium text-white">{step.title}</h3>
-                    <p className="mt-2 text-[14.5px] leading-relaxed text-white/50">{step.desc}</p>
-                  </div>
-                </FadeIn>
-
-                <div className="hidden flex-1 md:block" />
+                <div>
+                  <h3 className="text-[16px] font-semibold text-label">{step.title}</h3>
+                  <p className="mt-1 text-[14px] leading-relaxed text-label-secondary">{step.desc}</p>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </div>
     </section>
   );
