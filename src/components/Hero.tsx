@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { RevealText } from "./ui/RevealText";
 import { MarkedText } from "./ui/MarkedText";
 import { MagneticButton } from "./ui/MagneticButton";
-import { AuroraField } from "./ui/AuroraField";
+import HeroShowcase from "./HeroShowcase";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -21,9 +21,7 @@ export default function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
   return (
-    <section id="top" ref={ref} className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-20">
-      <AuroraField />
-
+    <section id="top" ref={ref} className="relative flex min-h-screen items-center overflow-hidden bg-bg pt-28 pb-24">
       <motion.div style={{ y, opacity, scale }} className="relative z-10 mx-auto w-full max-w-4xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -78,13 +76,15 @@ export default function Hero() {
             See example work
           </MagneticButton>
         </motion.div>
+
+        <HeroShowcase />
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.3, duration: 0.9 }}
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 hidden sm:block"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
