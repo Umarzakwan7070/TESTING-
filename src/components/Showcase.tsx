@@ -1,41 +1,148 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { FadeIn } from "./ui/FadeIn";
 
-const MOCKS = [
-  { label: "Coaching landing page — concept", color: "bg-ocean" },
-  { label: "Local service website — concept", color: "bg-coral" },
-  { label: "SaaS waitlist page — concept", color: "bg-sun" },
-];
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-function BrowserMock({ label, color, tilt }: { label: string; color: string; tilt: number }) {
+function LandingPageMock() {
   return (
-    <motion.div
-      style={{ rotate: tilt }}
-      whileHover={{ rotate: 0, y: -8 }}
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="card w-full max-w-sm shrink-0 overflow-hidden"
-    >
-      <div className="flex items-center gap-1.5 border-b border-line px-4 py-3">
-        <span className="h-2.5 w-2.5 rounded-full bg-ink/10" />
-        <span className="h-2.5 w-2.5 rounded-full bg-ink/10" />
-        <span className="h-2.5 w-2.5 rounded-full bg-ink/10" />
-      </div>
-      <div className="p-6">
-        <div className="h-2.5 w-2/3 rounded-full bg-ink/10" />
-        <div className="mt-3 h-2 w-1/2 rounded-full bg-ink/[0.06]" />
-        <div className={`mt-8 h-8 w-28 rounded-full ${color}`} />
-        <div className="mt-6 grid grid-cols-3 gap-2">
-          <div className="h-10 rounded-lg bg-ink/[0.04]" />
-          <div className="h-10 rounded-lg bg-ink/[0.04]" />
-          <div className="h-10 rounded-lg bg-ink/[0.04]" />
+    <div className="p-6">
+      <div className="h-3 w-3/4 rounded-full bg-ink/[0.16]" />
+      <div className="mt-2.5 h-3 w-1/2 rounded-full bg-ink/[0.16]" />
+      <div className="mt-5 h-2 w-full rounded-full bg-ink/[0.08]" />
+      <div className="mt-1.5 h-2 w-5/6 rounded-full bg-ink/[0.08]" />
+      <div className="mt-6 h-9 w-32 rounded-full bg-ocean" />
+      <div className="mt-6 rounded-2xl bg-white/60 p-3.5">
+        <div className="h-2 w-20 rounded-full bg-ink/[0.12]" />
+        <div className="mt-2.5 flex gap-2">
+          <div className="h-8 flex-1 rounded-lg bg-white/70" />
+          <div className="h-8 w-16 rounded-lg bg-ocean" />
         </div>
       </div>
-      <div className="border-t border-line px-4 py-3 text-[13px] font-bold text-ink-dim">
-        {label}
+    </div>
+  );
+}
+
+function WebsiteMock() {
+  return (
+    <div className="p-6">
+      <div className="flex items-center gap-2">
+        <div className="h-2 w-2 rounded-full bg-ocean" />
+        <div className="h-2 w-10 rounded-full bg-ink/[0.14]" />
+        <div className="ml-auto flex gap-1.5">
+          <div className="h-1.5 w-6 rounded-full bg-ink/10" />
+          <div className="h-1.5 w-6 rounded-full bg-ink/10" />
+          <div className="h-1.5 w-6 rounded-full bg-ink/10" />
+        </div>
       </div>
+      <div className="mt-5 h-16 w-full rounded-xl bg-gradient-to-br from-ocean/25 to-coral/20" />
+      <div className="mt-4 grid grid-cols-3 gap-2">
+        <div className="rounded-lg bg-white/60 p-2">
+          <div className="h-6 w-full rounded bg-ink/[0.08]" />
+          <div className="mt-1.5 h-1.5 w-3/4 rounded-full bg-ink/10" />
+        </div>
+        <div className="rounded-lg bg-white/60 p-2">
+          <div className="h-6 w-full rounded bg-ink/[0.08]" />
+          <div className="mt-1.5 h-1.5 w-3/4 rounded-full bg-ink/10" />
+        </div>
+        <div className="rounded-lg bg-white/60 p-2">
+          <div className="h-6 w-full rounded bg-ink/[0.08]" />
+          <div className="mt-1.5 h-1.5 w-3/4 rounded-full bg-ink/10" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CustomMock() {
+  return (
+    <div className="p-6">
+      <div className="flex gap-2">
+        <div className="h-8 flex-1 rounded-lg bg-white/60" />
+        <div className="h-8 w-8 shrink-0 rounded-lg bg-sun" />
+      </div>
+      <div className="mt-4 grid grid-cols-2 gap-2.5">
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="rounded-xl bg-white/60 p-2">
+            <div className="h-12 w-full rounded-lg bg-gradient-to-br from-coral/20 to-sun/20" />
+            <div className="mt-2 h-1.5 w-3/4 rounded-full bg-ink/[0.14]" />
+            <div className="mt-1 h-1.5 w-1/2 rounded-full bg-ink/[0.08]" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const CARDS = [
+  {
+    key: "landing",
+    label: "Landing Page",
+    price: "From $399",
+    mock: LandingPageMock,
+    dot: "bg-ocean",
+  },
+  {
+    key: "website",
+    label: "Website",
+    price: "From $700",
+    mock: WebsiteMock,
+    dot: "bg-coral",
+  },
+  {
+    key: "custom",
+    label: "Custom",
+    price: "From $1,499",
+    mock: CustomMock,
+    dot: "bg-sun",
+  },
+];
+
+function ShowcaseCard({
+  label,
+  price,
+  Mock,
+  dot,
+  y,
+  delay,
+  tilt,
+}: {
+  label: string;
+  price: string;
+  Mock: () => React.JSX.Element;
+  dot: string;
+  y: MotionValue<number>;
+  delay: number;
+  tilt: number;
+}) {
+  return (
+    <motion.div style={{ y }} className="flex justify-center">
+      <motion.div
+        initial={{ opacity: 0, y: 40, scale: 0.94, rotate: tilt }}
+        whileInView={{ opacity: 1, y: 0, scale: 1, rotate: tilt }}
+        viewport={{ once: true, amount: 0.2 }}
+        whileHover={{ rotate: 0, y: -10, scale: 1.02 }}
+        transition={{ duration: 0.7, delay, ease: EASE }}
+        className="glass w-full max-w-sm shrink-0 overflow-hidden"
+      >
+        <div className="flex items-center gap-1.5 border-b border-white/50 px-4 py-3">
+          <span className="h-2.5 w-2.5 rounded-full bg-ink/10" />
+          <span className="h-2.5 w-2.5 rounded-full bg-ink/10" />
+          <span className="h-2.5 w-2.5 rounded-full bg-ink/10" />
+        </div>
+
+        <Mock />
+
+        <div className="flex items-center justify-between border-t border-white/50 px-4 py-3">
+          <span className="flex items-center gap-2 text-[13px] font-bold text-ink">
+            <span className={`h-1.5 w-1.5 rounded-full ${dot}`} />
+            {label}
+          </span>
+          <span className="text-[12.5px] font-bold text-ink-dim">{price}</span>
+        </div>
+      </motion.div>
     </motion.div>
   );
 }
@@ -50,7 +157,13 @@ export default function Showcase() {
 
   return (
     <section id="work" ref={ref} className="relative overflow-hidden py-24">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[8%] top-10 h-72 w-72 rounded-full bg-ocean/25 blur-3xl" />
+        <div className="absolute right-[10%] top-40 h-64 w-64 rounded-full bg-coral/20 blur-3xl" />
+        <div className="absolute bottom-0 left-[38%] h-64 w-64 rounded-full bg-sun/25 blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto max-w-5xl px-6">
         <FadeIn className="mx-auto max-w-xl text-center">
           <span className="text-[13px] font-bold uppercase tracking-[0.08em] text-ocean">
             Example work
@@ -65,10 +178,17 @@ export default function Showcase() {
         </FadeIn>
 
         <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:items-start">
-          {MOCKS.map((m, i) => (
-            <motion.div key={m.label} style={{ y: yValues[i] }} className="flex justify-center">
-              <BrowserMock label={m.label} color={m.color} tilt={i % 2 === 0 ? -2 : 2} />
-            </motion.div>
+          {CARDS.map((c, i) => (
+            <ShowcaseCard
+              key={c.key}
+              label={c.label}
+              price={c.price}
+              Mock={c.mock}
+              dot={c.dot}
+              y={yValues[i]}
+              delay={i * 0.12}
+              tilt={i % 2 === 0 ? -2 : 2}
+            />
           ))}
         </div>
       </div>
