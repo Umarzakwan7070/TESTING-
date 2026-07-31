@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="relative flex flex-1 flex-col overflow-x-clip bg-bg">
+    <div className="relative flex flex-1 flex-col overflow-x-clip bg-foam">
       <Nav />
       <main className="flex flex-1 flex-col">
         <Hero />

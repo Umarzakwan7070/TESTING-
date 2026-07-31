@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { RevealText } from "./ui/RevealText";
 import { MarkedText } from "./ui/MarkedText";
 import { MagneticButton } from "./ui/MagneticButton";
+import { WaveField } from "./ui/WaveField";
 import HeroShowcase from "./HeroShowcase";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -21,30 +22,32 @@ export default function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
   return (
-    <section id="top" ref={ref} className="relative flex min-h-screen items-center overflow-hidden bg-bg pt-28 pb-24">
+    <section id="top" ref={ref} className="relative flex min-h-screen items-center overflow-hidden bg-foam pt-28 pb-24">
+      <WaveField />
+
       <motion.div style={{ y, opacity, scale }} className="relative z-10 mx-auto w-full max-w-4xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE }}
-          className="card mx-auto mb-8 flex w-fit items-center gap-2 px-4 py-1.5 text-[13px] font-medium text-label-secondary"
+          className="card mx-auto mb-8 flex w-fit items-center gap-2 px-4 py-1.5 text-[13px] font-bold text-ink-dim"
         >
           <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-pulse-soft rounded-full bg-accent" />
+            <span className="absolute inline-flex h-full w-full animate-pulse-soft rounded-full bg-coral" />
           </span>
           New studio — founding-client pricing
         </motion.div>
 
-        <h1 className="text-balance text-center font-bold leading-[1.02] tracking-tight text-label">
+        <h1 className="text-balance text-center font-display font-extrabold leading-[1.02] tracking-tight text-ink">
           <RevealText
             as="span"
-            text="Landing pages & websites"
-            className="block text-[10.5vw] sm:text-[6.5vw] lg:text-[4.2rem]"
+            text="Catch every wave"
+            className="block text-[11vw] sm:text-[7vw] lg:text-[4.4rem]"
           />
-          <span className="block text-[10.5vw] sm:text-[6.5vw] lg:text-[4.2rem]">
-            <RevealText as="span" text="built to" delay={0.32} />{" "}
+          <span className="block text-[11vw] sm:text-[7vw] lg:text-[4.4rem]">
+            <RevealText as="span" text="of" delay={0.32} />{" "}
             <MarkedText delay={1.0}>
-              <RevealText as="span" text="convert." delay={0.32} stagger={0.06} />
+              <RevealText as="span" text="leads." delay={0.32} stagger={0.06} />
             </MarkedText>
           </span>
         </h1>
@@ -53,7 +56,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.65, ease: EASE }}
-          className="mx-auto mt-7 max-w-lg text-balance text-center text-[16.5px] leading-relaxed text-label-secondary sm:text-lg"
+          className="mx-auto mt-7 max-w-lg text-balance text-center text-[16.5px] leading-relaxed text-ink-dim sm:text-lg"
         >
           Clean, fast landing pages and marketing websites for entrepreneurs.
           No online stores, no bloat — just a site built to turn visitors
@@ -89,9 +92,9 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex h-9 w-6 items-start justify-center rounded-full border border-separator p-1.5"
+          className="flex h-9 w-6 items-start justify-center rounded-full border border-line p-1.5"
         >
-          <div className="h-1.5 w-1 rounded-full bg-accent" />
+          <div className="h-1.5 w-1 rounded-full bg-ocean" />
         </motion.div>
       </motion.div>
     </section>

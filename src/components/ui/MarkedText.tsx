@@ -13,10 +13,10 @@ export function MarkedText({
   className?: string;
 }) {
   return (
-    <span className={`relative inline-block text-accent ${className}`}>
+    <span className={`relative inline-block text-coral ${className}`}>
       {children}
       <motion.span
-        className="pointer-events-none absolute -bottom-[0.1em] left-0 h-[3px] w-full origin-left rounded-full bg-accent"
+        className="pointer-events-none absolute -bottom-[0.08em] left-0 h-[4px] w-full origin-left rounded-full bg-coral"
         initial={{ scaleX: 0, opacity: 0 }}
         whileInView={{ scaleX: 1, opacity: 0.9 }}
         viewport={{ once: true, amount: 0 }}

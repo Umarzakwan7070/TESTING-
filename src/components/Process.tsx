@@ -14,10 +14,10 @@ export default function Process() {
     <section id="process" className="relative py-24">
       <div className="mx-auto max-w-2xl px-6">
         <FadeIn className="text-center">
-          <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-accent">
+          <span className="text-[13px] font-bold uppercase tracking-[0.08em] text-ocean">
             How it works
           </span>
-          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-label sm:text-4xl">
+          <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             From kickoff to launch in days
           </h2>
         </FadeIn>
@@ -26,12 +26,12 @@ export default function Process() {
           {STEPS.map((step) => (
             <StaggerItem key={step.n}>
               <div className="card flex items-start gap-4 p-5">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent text-[15px] font-bold text-white">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ocean text-[15px] font-bold text-white">
                   {step.n}
                 </div>
                 <div>
-                  <h3 className="text-[16px] font-semibold text-label">{step.title}</h3>
-                  <p className="mt-1 text-[14px] leading-relaxed text-label-secondary">{step.desc}</p>
+                  <h3 className="text-[16px] font-bold text-ink">{step.title}</h3>
+                  <p className="mt-1 text-[14px] leading-relaxed text-ink-dim">{step.desc}</p>
                 </div>
               </div>
             </StaggerItem>

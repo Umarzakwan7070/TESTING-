@@ -58,13 +58,13 @@ export default function Pricing() {
     <section id="pricing" className="relative py-24">
       <div className="mx-auto max-w-2xl px-6">
         <FadeIn className="text-center">
-          <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-accent">
+          <span className="text-[13px] font-bold uppercase tracking-[0.08em] text-ocean">
             Pricing
           </span>
-          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-label sm:text-4xl">
+          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Two ways to get online
           </h2>
-          <p className="mt-3 text-balance text-[16px] leading-relaxed text-label-secondary">
+          <p className="mt-3 text-balance text-[16px] leading-relaxed text-ink-dim">
             Simple, flat pricing. No e-commerce, no scope creep.
           </p>
         </FadeIn>
@@ -90,18 +90,18 @@ export default function Pricing() {
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="card p-8"
             >
-              <h3 className="text-lg font-semibold text-label">{active.name}</h3>
-              <p className="mt-1 text-[14px] text-label-secondary">{active.desc}</p>
+              <h3 className="text-lg font-bold text-ink">{active.name}</h3>
+              <p className="mt-1 text-[14px] text-ink-dim">{active.desc}</p>
 
               <div className="mt-6 flex items-baseline gap-2">
-                <span className="text-4xl font-bold tracking-tight text-label">{active.price}</span>
-                <span className="text-[13px] text-label-secondary">{active.priceNote}</span>
+                <span className="text-4xl font-bold tracking-tight text-ink">{active.price}</span>
+                <span className="text-[13px] text-ink-dim">{active.priceNote}</span>
               </div>
 
               <ul className="mt-7 flex flex-col gap-3">
                 {active.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-[14.5px] text-label">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={2.5} />
+                  <li key={f} className="flex items-start gap-2.5 text-[14.5px] text-ink">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-ocean" strokeWidth={2.5} />
                     {f}
                   </li>
                 ))}
@@ -111,7 +111,7 @@ export default function Pricing() {
                 Get started
               </MagneticButton>
 
-              <p className="mt-4 text-center text-[12.5px] leading-relaxed text-label-tertiary">
+              <p className="mt-4 text-center text-[12.5px] leading-relaxed text-ink-faint">
                 {active.footnote}
               </p>
             </motion.div>

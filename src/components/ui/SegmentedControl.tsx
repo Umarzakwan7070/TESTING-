@@ -12,13 +12,13 @@ export function SegmentedControl<T extends string>({
   onChange: (v: T) => void;
 }) {
   return (
-    <div className="relative mx-auto flex w-fit rounded-full bg-black/5 p-1 dark:bg-white/10">
+    <div className="relative mx-auto flex w-fit rounded-full bg-ink/5 p-1">
       {options.map((opt) => (
         <button
           key={opt.value}
           onClick={() => onChange(opt.value)}
-          className={`relative z-10 rounded-full px-5 py-2 text-[14px] font-medium transition-colors duration-200 ${
-            value === opt.value ? "text-label" : "text-label-secondary"
+          className={`relative z-10 rounded-full px-5 py-2 text-[14px] font-bold transition-colors duration-200 ${
+            value === opt.value ? "text-ink" : "text-ink-dim"
           }`}
         >
           {value === opt.value && (

@@ -12,6 +12,20 @@ const LINKS = [
   { href: "#faq", label: "FAQ" },
 ];
 
+function WaveMark() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path
+        d="M1 11c1.5 -2 3 2 4.5 0S9 9 10.5 11 14 13 15.5 11 17 9 17 9"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -34,14 +48,14 @@ export default function Nav() {
     >
       <div
         className={`flex w-full items-center justify-between px-5 py-3 transition-all duration-300 md:px-8 ${
-          scrolled ? "nav-blur border-b border-separator" : "border-b border-transparent"
+          scrolled ? "border-b border-line bg-foam/85 backdrop-blur-md" : "border-b border-transparent"
         }`}
       >
-        <a href="#top" className="flex items-center gap-2 text-[16px] font-semibold tracking-tight text-label">
-          <span className="flex h-7 w-7 items-center justify-center rounded-[9px] bg-accent">
-            <span className="h-2.5 w-2.5 rounded-full bg-white" />
+        <a href="#top" className="flex items-center gap-2 font-display text-[18px] font-bold text-ink">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ocean">
+            <WaveMark />
           </span>
-          Launchframe
+          SurfingLeads
         </a>
 
         <nav className="hidden items-center gap-7 md:flex">
@@ -49,7 +63,7 @@ export default function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="text-[14px] font-medium text-label-secondary transition-colors hover:text-label"
+              className="text-[14px] font-bold text-ink-dim transition-colors hover:text-ink"
             >
               {link.label}
             </a>
@@ -64,21 +78,21 @@ export default function Nav() {
 
         <button
           onClick={() => setOpen((o) => !o)}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-label md:hidden"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-ink md:hidden"
           aria-label="Toggle menu"
         >
           <div className="relative h-4 w-5">
             <motion.span
               animate={{ rotate: open ? 45 : 0, top: open ? "50%" : "0%" }}
-              className="absolute left-0 top-0 h-[1.5px] w-full bg-label"
+              className="absolute left-0 top-0 h-[2px] w-full rounded-full bg-ink"
             />
             <motion.span
               animate={{ opacity: open ? 0 : 1 }}
-              className="absolute left-0 top-1/2 h-[1.5px] w-full -translate-y-1/2 bg-label"
+              className="absolute left-0 top-1/2 h-[2px] w-full -translate-y-1/2 rounded-full bg-ink"
             />
             <motion.span
               animate={{ rotate: open ? -45 : 0, bottom: open ? "50%" : "0%" }}
-              className="absolute left-0 bottom-0 h-[1.5px] w-full bg-label"
+              className="absolute left-0 bottom-0 h-[2px] w-full rounded-full bg-ink"
             />
           </div>
         </button>
@@ -98,7 +112,7 @@ export default function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-4 py-3 text-[15px] font-medium text-label-secondary transition-colors hover:bg-black/5 hover:text-label"
+                className="rounded-xl px-4 py-3 text-[15px] font-bold text-ink-dim transition-colors hover:bg-ink/5 hover:text-ink"
               >
                 {link.label}
               </a>
@@ -106,7 +120,7 @@ export default function Nav() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-xl bg-accent px-4 py-3 text-center text-[15px] font-semibold text-white"
+              className="mt-2 rounded-xl bg-ocean px-4 py-3 text-center text-[15px] font-bold text-white"
             >
               Get a quote
             </a>

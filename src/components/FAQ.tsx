@@ -35,16 +35,16 @@ const FAQS = [
 function FAQItem({ q, a, last }: { q: string; a: string; last: boolean }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className={last ? "" : "border-b border-separator"}>
+    <div className={last ? "" : "border-b border-line"}>
       <button
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center justify-between gap-6 px-5 py-4 text-left"
       >
-        <span className="text-[15px] font-medium text-label">{q}</span>
+        <span className="text-[15px] font-medium text-ink">{q}</span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-black/5 text-label-secondary"
+          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-ink/5 text-ink-dim"
         >
           <Plus className="h-3.5 w-3.5" />
         </motion.span>
@@ -58,7 +58,7 @@ function FAQItem({ q, a, last }: { q: string; a: string; last: boolean }) {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <p className="px-5 pb-4 text-[14px] leading-relaxed text-label-secondary">{a}</p>
+            <p className="px-5 pb-4 text-[14px] leading-relaxed text-ink-dim">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -71,10 +71,10 @@ export default function FAQ() {
     <section id="faq" className="relative py-24">
       <div className="mx-auto max-w-2xl px-6">
         <FadeIn className="text-center">
-          <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-accent">
+          <span className="text-[13px] font-bold uppercase tracking-[0.08em] text-ocean">
             FAQ
           </span>
-          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-label sm:text-4xl">
+          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Questions, answered
           </h2>
         </FadeIn>
