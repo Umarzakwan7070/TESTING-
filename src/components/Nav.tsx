@@ -12,20 +12,6 @@ const LINKS = [
   { href: "#faq", label: "FAQ" },
 ];
 
-function WaveMark() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path
-        d="M1 11c1.5 -2 3 2 4.5 0S9 9 10.5 11 14 13 15.5 11 17 9 17 9"
-        stroke="white"
-        strokeWidth="2"
-        strokeLinecap="round"
-        fill="none"
-      />
-    </svg>
-  );
-}
-
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -51,19 +37,16 @@ export default function Nav() {
           scrolled ? "border-b border-line bg-foam/85 backdrop-blur-md" : "border-b border-transparent"
         }`}
       >
-        <a href="#top" className="flex items-center gap-2 font-display text-[18px] font-bold text-ink">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ocean">
-            <WaveMark />
-          </span>
+        <a href="#top" className="font-display text-[18px] font-bold text-ink">
           SurfingLeads
         </a>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-line bg-white/70 p-1.5 backdrop-blur-sm md:flex">
           {LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-[14px] font-bold text-ink-dim transition-colors hover:text-ink"
+              className="rounded-full px-4 py-2 text-[14px] font-bold text-ink-dim transition-colors hover:bg-ink/5 hover:text-ink"
             >
               {link.label}
             </a>

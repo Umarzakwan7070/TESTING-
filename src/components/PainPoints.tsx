@@ -1,13 +1,13 @@
 "use client";
 
 import { FadeIn, Stagger, StaggerItem } from "./ui/FadeIn";
-import { Clock, EyeOff, LogOut, Hammer } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-const PAINS = [
-  { icon: Clock, text: "Your website looks like it's stuck in 2015" },
-  { icon: EyeOff, text: "You're a little embarrassed to share your link" },
-  { icon: LogOut, text: "Visitors leave before they read a word" },
-  { icon: Hammer, text: "You built it yourself, and everyone can tell" },
+const PAIRS = [
+  { problem: "Doing it yourself is hard", solution: "I make it easy" },
+  { problem: "An unattractive site", solution: "A site that makes an impression" },
+  { problem: "Customers can't find you", solution: "Customers can actually see you" },
+  { problem: "It's eating up your time", solution: "It frees up your time" },
 ];
 
 export default function PainPoints() {
@@ -16,26 +16,29 @@ export default function PainPoints() {
       <div className="mx-auto max-w-2xl px-6 text-center">
         <FadeIn>
           <span className="text-[13px] font-bold uppercase tracking-[0.08em] text-coral">
-            Sound familiar?
+            Problem &rarr; Solution
           </span>
           <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Your business deserves better than this.
           </h2>
         </FadeIn>
 
-        <Stagger className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {PAINS.map((p) => (
-            <StaggerItem key={p.text}>
-              <div className="flex h-full items-center gap-3 rounded-2xl bg-coral/[0.08] px-5 py-4 text-left">
-                <p.icon className="h-5 w-5 shrink-0 text-coral" strokeWidth={2} />
-                <p className="text-[14.5px] font-bold text-ink">{p.text}</p>
+        <Stagger className="mt-10 flex flex-col gap-3">
+          {PAIRS.map((p) => (
+            <StaggerItem key={p.problem}>
+              <div className="flex flex-col items-center gap-2.5 rounded-2xl bg-white px-5 py-4 shadow-sm sm:flex-row sm:justify-center sm:gap-4">
+                <span className="text-[14.5px] font-bold text-ink-faint line-through decoration-coral/50">
+                  {p.problem}
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-coral" strokeWidth={2.5} />
+                <span className="text-[14.5px] font-bold text-ocean">{p.solution}</span>
               </div>
             </StaggerItem>
           ))}
         </Stagger>
 
         <FadeIn delay={0.3} className="mt-8">
-          <p className="text-[18px] font-bold text-ocean">That ends today.</p>
+          <p className="text-[18px] font-bold text-ocean">That&apos;s the switch.</p>
         </FadeIn>
       </div>
     </section>

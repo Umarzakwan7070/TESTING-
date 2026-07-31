@@ -80,21 +80,18 @@ const CARDS = [
   {
     key: "landing",
     label: "Landing Page",
-    price: "From $399",
     mock: LandingPageMock,
     dot: "bg-ocean",
   },
   {
     key: "website",
     label: "Website",
-    price: "From $700",
     mock: WebsiteMock,
     dot: "bg-coral",
   },
   {
     key: "custom",
     label: "Custom",
-    price: "From $1,499",
     mock: CustomMock,
     dot: "bg-sun",
   },
@@ -102,7 +99,6 @@ const CARDS = [
 
 function ShowcaseCard({
   label,
-  price,
   Mock,
   dot,
   y,
@@ -110,7 +106,6 @@ function ShowcaseCard({
   tilt,
 }: {
   label: string;
-  price: string;
   Mock: () => React.JSX.Element;
   dot: string;
   y: MotionValue<number>;
@@ -135,12 +130,9 @@ function ShowcaseCard({
 
         <Mock />
 
-        <div className="flex items-center justify-between border-t border-white/50 px-4 py-3">
-          <span className="flex items-center gap-2 text-[13px] font-bold text-ink">
-            <span className={`h-1.5 w-1.5 rounded-full ${dot}`} />
-            {label}
-          </span>
-          <span className="text-[12.5px] font-bold text-ink-dim">{price}</span>
+        <div className="flex items-center gap-2 border-t border-white/50 px-4 py-3">
+          <span className={`h-1.5 w-1.5 rounded-full ${dot}`} />
+          <span className="text-[13px] font-bold text-ink">{label}</span>
         </div>
       </motion.div>
     </motion.div>
@@ -166,14 +158,15 @@ export default function Showcase() {
       <div className="relative mx-auto max-w-5xl px-6">
         <FadeIn className="mx-auto max-w-xl text-center">
           <span className="text-[13px] font-bold uppercase tracking-[0.08em] text-ocean">
-            Example work
+            What we could build
           </span>
           <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-            The kind of site I build
+            A few ideas to start from
           </h2>
           <p className="mt-3 text-balance text-[16px] leading-relaxed text-ink-dim">
-            I&apos;m a new studio, so these are concept layouts showing style
-            and structure — your project would be fully custom.
+            I&apos;m a new studio, so these are concept directions showing
+            style and structure — from a single landing page to a full
+            website. Your project would be fully custom.
           </p>
         </FadeIn>
 
@@ -182,7 +175,6 @@ export default function Showcase() {
             <ShowcaseCard
               key={c.key}
               label={c.label}
-              price={c.price}
               Mock={c.mock}
               dot={c.dot}
               y={yValues[i]}
