@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Baloo_2, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import CouponPopup from "@/components/CouponPopup";
 
 const baloo = Baloo_2({
   variable: "--font-display",
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en" className={`${baloo.variable} ${nunito.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-foam text-ink">
         <SmoothScroll>{children}</SmoothScroll>
+        <CouponPopup />
       </body>
     </html>
   );
