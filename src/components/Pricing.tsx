@@ -7,7 +7,7 @@ import { FadeIn } from "./ui/FadeIn";
 import { SegmentedControl } from "./ui/SegmentedControl";
 import { MagneticButton } from "./ui/MagneticButton";
 
-type PlanKey = "landing" | "website";
+type PlanKey = "landing" | "website" | "realestate";
 
 const PLANS: Record<
   PlanKey,
@@ -48,6 +48,21 @@ const PLANS: Record<
     ],
     footnote: "$700 upfront for the build. Hosting is free for 3 months, then $99/month for hosting and maintenance.",
   },
+  realestate: {
+    name: "Real Estate Site",
+    price: "$1,499",
+    priceNote: "starting price, one-time",
+    desc: "A property showcase site for agencies — buyers and renters browse listings, then reach out to close the deal with you directly.",
+    features: [
+      "Property listings with photos & details",
+      "Filter by for-sale / for-rent",
+      "Inquiry form — no online payments or bookings",
+      "Copywriting included",
+      "Free hosting for the first 3 months",
+      "$99/month after month 3 (hosting + maintenance)",
+    ],
+    footnote: "$1,499 upfront for the build. Hosting is free for 3 months, then $99/month. Every deal happens face-to-face between you and the client — nothing is transacted on the site.",
+  },
 };
 
 export default function Pricing() {
@@ -62,7 +77,7 @@ export default function Pricing() {
             Pricing
           </span>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-            Two ways to get online
+            Three ways to get online
           </h2>
           <p className="mt-3 text-balance text-[16px] leading-relaxed text-ink-dim">
             Simple, flat pricing. No e-commerce, no scope creep.
@@ -76,6 +91,7 @@ export default function Pricing() {
             options={[
               { value: "landing", label: "Landing Page" },
               { value: "website", label: "Website" },
+              { value: "realestate", label: "Real Estate" },
             ]}
           />
         </FadeIn>

@@ -30,6 +30,10 @@ const FAQS = [
     q: "Do you write the copy too?",
     a: "Yes. Copywriting is included in every plan. You can also bring your own draft and I'll refine it for conversion.",
   },
+  {
+    q: "Do you build sites for real estate agencies?",
+    a: "Yes — a dedicated Real Estate plan starting at $1,499. It showcases what you have for sale or rent with photos and details, and lets buyers or renters filter and get in touch. The deal itself always happens face-to-face between you and the client — the site never processes payments or bookings.",
+  },
 ];
 
 function FAQItem({ q, a, last }: { q: string; a: string; last: boolean }) {
