@@ -1,12 +1,10 @@
 function WaveLayer({
-  color,
-  opacity,
+  fill,
   animClass,
   d,
   bottom,
 }: {
-  color: string;
-  opacity: number;
+  fill: string;
   animClass: string;
   d: string;
   bottom: number;
@@ -18,7 +16,7 @@ function WaveLayer({
       className={`absolute left-0 h-full w-[200%] ${animClass}`}
       style={{ bottom }}
     >
-      <path d={d} fill={color} opacity={opacity} />
+      <path d={d} fill={fill} />
     </svg>
   );
 }
@@ -30,9 +28,28 @@ export function WaveField({ className = "" }: { className?: string }) {
 
   return (
     <div className={`pointer-events-none absolute inset-x-0 bottom-0 h-[46%] overflow-hidden ${className}`}>
-      <WaveLayer color="var(--ocean)" opacity={0.1} animClass="animate-wave-3" d={far} bottom={0} />
-      <WaveLayer color="var(--ocean)" opacity={0.16} animClass="animate-wave-2" d={mid} bottom={0} />
-      <WaveLayer color="var(--ocean)" opacity={0.24} animClass="animate-wave-1" d={near} bottom={0} />
+      <svg width="0" height="0" className="absolute">
+        <defs>
+          <linearGradient id="waveFarGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#bdeef5" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="var(--ocean)" stopOpacity="0.14" />
+          </linearGradient>
+          <linearGradient id="waveMidGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#9fe6ef" stopOpacity="0.55" />
+            <stop offset="45%" stopColor="var(--ocean)" stopOpacity="0.22" />
+            <stop offset="100%" stopColor="var(--ocean-deep)" stopOpacity="0.2" />
+          </linearGradient>
+          <linearGradient id="waveNearGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.75" />
+            <stop offset="10%" stopColor="#c9f3f8" stopOpacity="0.55" />
+            <stop offset="40%" stopColor="var(--ocean)" stopOpacity="0.32" />
+            <stop offset="100%" stopColor="var(--ocean-deep)" stopOpacity="0.34" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <WaveLayer fill="url(#waveFarGrad)" animClass="animate-wave-3" d={far} bottom={0} />
+      <WaveLayer fill="url(#waveMidGrad)" animClass="animate-wave-2" d={mid} bottom={0} />
+      <WaveLayer fill="url(#waveNearGrad)" animClass="animate-wave-1" d={near} bottom={0} />
     </div>
   );
 }
