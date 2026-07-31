@@ -111,7 +111,9 @@ export default function HeroShowcase() {
                 <span className="h-2 w-2 rounded-full bg-ink/10" />
                 <span className="h-2 w-2 rounded-full bg-ink/10" />
               </div>
-              <c.mock />
+              <div className="flex h-44 flex-col justify-center overflow-hidden">
+                <c.mock />
+              </div>
               <div className="flex items-center gap-1.5 border-t border-white/50 px-3.5 py-2.5">
                 <span className={`h-1.5 w-1.5 rounded-full ${c.dot}`} />
                 <span className="text-[12px] font-bold text-ink">{c.label}</span>

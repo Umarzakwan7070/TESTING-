@@ -46,7 +46,7 @@ export default function Hero() {
           />
           <span className="block text-[11vw] sm:text-[7vw] lg:text-[4.4rem]">
             <RevealText as="span" text="of" delay={0.32} />{" "}
-            <MarkedText delay={1.0}>
+            <MarkedText>
               <RevealText as="span" text="leads." delay={0.32} stagger={0.06} />
             </MarkedText>
           </span>
