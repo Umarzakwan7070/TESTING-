@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -62,45 +63,62 @@ function CustomMock() {
 }
 
 const CARDS = [
-  { key: "landing", label: "Landing Page", price: "$399", mock: LandingPageMock, dot: "bg-ocean", float: 0, delay: 1.1 },
-  { key: "website", label: "Website", price: "$700", mock: WebsiteMock, dot: "bg-coral", float: -14, delay: 1.25 },
-  { key: "custom", label: "Custom", price: "$1,499", mock: CustomMock, dot: "bg-sun", float: 0, delay: 1.4 },
+  { key: "landing", label: "Landing Page", mock: LandingPageMock, dot: "bg-ocean", float: 0, tilt: -8, delay: 1.1 },
+  { key: "website", label: "Website", mock: WebsiteMock, dot: "bg-coral", float: -14, tilt: 0, delay: 1.25 },
+  { key: "custom", label: "Custom", mock: CustomMock, dot: "bg-sun", float: 0, tilt: 8, delay: 1.4 },
 ];
 
 export default function HeroShowcase() {
+  const [active, setActive] = useState<string | null>(null);
+
   return (
-    <div className="relative mx-auto mt-16 w-full max-w-4xl lg:mt-24">
+    <div className="relative mx-auto mt-16 w-full max-w-4xl lg:mt-24" style={{ perspective: 1400 }}>
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-[10%] top-0 h-48 w-48 rounded-full bg-ocean/20 blur-3xl" />
         <div className="absolute right-[10%] top-10 h-48 w-48 rounded-full bg-coral/20 blur-3xl" />
         <div className="absolute bottom-0 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-sun/20 blur-3xl" />
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:items-start">
-        {CARDS.map((c) => (
-          <motion.div
-            key={c.key}
-            initial={{ opacity: 0, y: 50, scale: 0.92 }}
-            animate={{ opacity: 1, y: c.float, scale: 1 }}
-            whileHover={{ y: c.float - 8, scale: 1.03 }}
-            transition={{ duration: 0.8, delay: c.delay, ease: EASE }}
-            className="glass w-full overflow-hidden"
-          >
-            <div className="flex items-center gap-1.5 border-b border-white/50 px-3.5 py-2.5">
-              <span className="h-2 w-2 rounded-full bg-ink/10" />
-              <span className="h-2 w-2 rounded-full bg-ink/10" />
-              <span className="h-2 w-2 rounded-full bg-ink/10" />
-            </div>
-            <c.mock />
-            <div className="flex items-center justify-between border-t border-white/50 px-3.5 py-2.5">
-              <span className="flex items-center gap-1.5 text-[12px] font-bold text-ink">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:items-center">
+        {CARDS.map((c) => {
+          const isActive = active === c.key;
+          const dimmed = active !== null && !isActive;
+
+          return (
+            <motion.button
+              key={c.key}
+              type="button"
+              onClick={() => setActive(isActive ? null : c.key)}
+              initial={{ opacity: 0, y: 50, scale: 0.92, rotateY: 0 }}
+              animate={
+                isActive
+                  ? { opacity: 1, y: c.float - 22, scale: 1.1, rotateY: 0, filter: "brightness(1)" }
+                  : {
+                      opacity: 1,
+                      y: dimmed ? c.float + 8 : c.float,
+                      scale: dimmed ? 0.9 : 1,
+                      rotateY: dimmed ? c.tilt : 0,
+                      filter: dimmed ? "brightness(0.85)" : "brightness(1)",
+                    }
+              }
+              whileHover={!isActive ? { y: c.float - 8, scale: 1.03 } : undefined}
+              transition={{ duration: 0.7, delay: active === null ? c.delay : 0, ease: EASE }}
+              style={{ zIndex: isActive ? 30 : 10, transformStyle: "preserve-3d" }}
+              className="glass w-full cursor-pointer overflow-hidden text-left"
+            >
+              <div className="flex items-center gap-1.5 border-b border-white/50 px-3.5 py-2.5">
+                <span className="h-2 w-2 rounded-full bg-ink/10" />
+                <span className="h-2 w-2 rounded-full bg-ink/10" />
+                <span className="h-2 w-2 rounded-full bg-ink/10" />
+              </div>
+              <c.mock />
+              <div className="flex items-center gap-1.5 border-t border-white/50 px-3.5 py-2.5">
                 <span className={`h-1.5 w-1.5 rounded-full ${c.dot}`} />
-                {c.label}
-              </span>
-              <span className="text-[11.5px] font-bold text-ink-dim">{c.price}</span>
-            </div>
-          </motion.div>
-        ))}
+                <span className="text-[12px] font-bold text-ink">{c.label}</span>
+              </div>
+            </motion.button>
+          );
+        })}
       </div>
     </div>
   );
