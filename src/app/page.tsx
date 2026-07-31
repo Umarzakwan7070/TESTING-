@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import PainPoints from "@/components/PainPoints";
 import FounderBar from "@/components/FounderBar";
 import Features from "@/components/Features";
 import Process from "@/components/Process";
@@ -15,6 +16,7 @@ export default function Home() {
       <Nav />
       <main className="flex flex-1 flex-col">
         <Hero />
+        <PainPoints />
         <FounderBar />
         <Features />
         <Process />

@@ -12,7 +12,7 @@ export default function CTA() {
           <WaveDivider fill="var(--foam)" className="!h-10" />
           <div className="px-8 pb-16 pt-4 sm:px-16 sm:pb-20">
             <h2 className="text-balance font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">
-              Let&apos;s build the site that turns visitors into customers.
+              Stop losing customers to a website that undersells you.
             </h2>
             <p className="mx-auto mt-5 max-w-md text-balance text-[16px] leading-relaxed text-white/80">
               Book a free 20-minute call. I&apos;ll tell you honestly whether a

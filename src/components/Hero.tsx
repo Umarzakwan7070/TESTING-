@@ -58,9 +58,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.65, ease: EASE }}
           className="mx-auto mt-7 max-w-lg text-balance text-center text-[16.5px] leading-relaxed text-ink-dim sm:text-lg"
         >
-          Clean, fast landing pages and marketing websites for entrepreneurs.
-          No online stores, no bloat — just a site built to turn visitors
-          into customers.
+          You&apos;ve built something real. Your website should prove it, not
+          undersell it. I design landing pages and marketing sites
+          entrepreneurs are actually proud to send people to.
         </motion.p>
 
         <motion.div
