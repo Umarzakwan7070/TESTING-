@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 import { FadeIn } from "./ui/FadeIn";
 import { SegmentedControl } from "./ui/SegmentedControl";
 import { MagneticButton } from "./ui/MagneticButton";
@@ -127,7 +127,12 @@ export default function Pricing() {
                 Get started
               </MagneticButton>
 
-              <p className="mt-4 text-center text-[12.5px] leading-relaxed text-ink-faint">
+              <p className="mt-4 flex items-center justify-center gap-1.5 text-[12.5px] font-bold text-ocean">
+                <ShieldCheck className="h-3.5 w-3.5" strokeWidth={2.5} />
+                Free revisions until you&apos;re happy
+              </p>
+
+              <p className="mt-3 text-center text-[12.5px] leading-relaxed text-ink-faint">
                 {active.footnote}
               </p>
             </motion.div>

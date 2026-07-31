@@ -26,6 +26,7 @@ export default function Nav() {
   }, [open]);
 
   return (
+    <>
     <motion.header
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -111,5 +112,21 @@ export default function Nav() {
         )}
       </AnimatePresence>
     </motion.header>
+
+    <AnimatePresence>
+      {scrolled && (
+        <motion.a
+          href="mailto:hello@surfingleads.co"
+          initial={{ y: 80, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 80, opacity: 0 }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed inset-x-4 bottom-4 z-40 flex items-center justify-center rounded-full bg-ocean px-6 py-3.5 text-[15px] font-bold text-white shadow-lg shadow-ocean/30 sm:hidden"
+        >
+          Book a free call
+        </motion.a>
+      )}
+    </AnimatePresence>
+    </>
   );
 }

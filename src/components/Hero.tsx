@@ -67,17 +67,23 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: EASE }}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          className="mt-10 flex flex-col items-center justify-center gap-4"
         >
-          <MagneticButton href="#pricing">
-            See pricing
+          <MagneticButton href="mailto:hello@surfingleads.co">
+            Book a free call
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M3 7.5H12M12 7.5L8 3.5M12 7.5L8 11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </MagneticButton>
-          <MagneticButton href="#work" variant="secondary">
-            See example work
-          </MagneticButton>
+          <div className="flex items-center gap-3 text-[13.5px] font-bold text-ink-dim">
+            <a href="#pricing" className="transition-colors hover:text-ink">
+              See pricing
+            </a>
+            <span className="text-ink-faint">&middot;</span>
+            <a href="#work" className="transition-colors hover:text-ink">
+              See example work
+            </a>
+          </div>
         </motion.div>
 
         <HeroShowcase />

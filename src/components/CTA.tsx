@@ -1,5 +1,6 @@
 "use client";
 
+import { ShieldCheck } from "lucide-react";
 import { FadeIn } from "./ui/FadeIn";
 import { MagneticButton } from "./ui/MagneticButton";
 import { WaveDivider } from "./ui/WaveDivider";
@@ -29,6 +30,11 @@ export default function CTA() {
                 View pricing
               </MagneticButton>
             </div>
+
+            <p className="mt-6 flex items-center justify-center gap-1.5 text-[13px] font-bold text-white/70">
+              <ShieldCheck className="h-3.5 w-3.5" strokeWidth={2.5} />
+              Free revisions until you&apos;re happy — no extra charge.
+            </p>
           </div>
         </FadeIn>
       </div>
