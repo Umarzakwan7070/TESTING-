@@ -25,28 +25,36 @@ const POINTS = [
 
 export default function FounderBar() {
   return (
-    <section id="about" className="relative border-y border-line py-16">
-      <div className="mx-auto max-w-4xl px-6">
+    <section id="about" className="relative overflow-hidden py-24">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[12%] top-0 h-64 w-64 rounded-full bg-ocean/15 blur-3xl" />
+        <div className="absolute right-[10%] bottom-0 h-64 w-64 rounded-full bg-sun/15 blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto max-w-4xl px-6">
         <FadeIn className="mx-auto max-w-xl text-center">
           <span className="text-[13px] font-bold uppercase tracking-[0.08em] text-ocean">
             About
           </span>
-          <h2 className="mt-3 text-balance font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+          <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             One person, building your site right
           </h2>
-          <p className="mt-3 text-balance text-[15px] leading-relaxed text-ink-dim">
-            SurfingLeads is me — a solo, no-code studio. No agency overhead,
-            no junior handoffs. You work directly with the person actually
-            building your site, from the first call to launch.
+          <p className="mt-4 text-balance text-[16px] leading-relaxed text-ink-dim">
+            SurfingLeads is me — a solo, no-code studio. No agency
+            overhead, no junior handoffs. You work directly with the
+            person actually building your site, from the first call to
+            launch.
           </p>
         </FadeIn>
 
-        <Stagger className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
+        <Stagger className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
           {POINTS.map((p) => (
-            <StaggerItem key={p.title} className="flex flex-col items-center gap-3 text-center sm:items-start sm:text-left">
-              <IconTile icon={p.icon} color={p.color} />
-              <h3 className="text-[15px] font-bold text-ink">{p.title}</h3>
-              <p className="text-[13.5px] leading-relaxed text-ink-dim">{p.desc}</p>
+            <StaggerItem key={p.title}>
+              <div className="card h-full p-6 text-center transition-transform hover:-translate-y-1 sm:text-left">
+                <IconTile icon={p.icon} color={p.color} />
+                <h3 className="mt-4 text-[15px] font-bold text-ink">{p.title}</h3>
+                <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-dim">{p.desc}</p>
+              </div>
             </StaggerItem>
           ))}
         </Stagger>

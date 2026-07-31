@@ -3,9 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Eye, MousePointerClick, ShieldCheck, TrendingUp, Users, Target, RotateCcw } from "lucide-react";
+import { Eye, MousePointerClick, ShieldCheck, TrendingUp, Users, Target, RotateCcw, ArrowLeft, Compass } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem } from "./ui/FadeIn";
 import { MagneticButton } from "./ui/MagneticButton";
+import { IconTile } from "./ui/IconTile";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -38,7 +39,7 @@ const QUESTIONS: Question[] = [
   },
   {
     category: "visibility",
-    text: "Is your site fast and easy to use on a phone?",
+    text: "Is your site fast and effortless to use on a phone?",
     options: [
       { label: "Yes, it's smooth on mobile", points: 2 },
       { label: "It works, but it's clunky", points: 1 },
@@ -110,22 +111,25 @@ const QUESTIONS: Question[] = [
   },
 ];
 
-const CATEGORY_ICON: Record<Category, typeof Eye> = {
-  visibility: Eye,
-  conversion: MousePointerClick,
-  trust: ShieldCheck,
-};
-
-const CATEGORY_COPY: Record<Category, { label: string; insight: string }> = {
+const CATEGORY_META: Record<
+  Category,
+  { icon: typeof Eye; color: "ocean" | "coral" | "sun"; label: string; insight: string }
+> = {
   visibility: {
+    icon: Eye,
+    color: "ocean",
     label: "Visibility",
     insight: "People can't quickly tell what you do, or find a page dedicated to it.",
   },
   conversion: {
+    icon: MousePointerClick,
+    color: "coral",
     label: "Conversion",
     insight: "You're not making it easy for visitors to take action or leave their info.",
   },
   trust: {
+    icon: ShieldCheck,
+    color: "sun",
     label: "Trust",
     insight: "Your site isn't yet doing enough to make strangers comfortable reaching out.",
   },
@@ -182,6 +186,35 @@ const STATS = [
   },
 ];
 
+function ScoreRing({ score, max = 20 }: { score: number; max?: number }) {
+  const radius = 42;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference * (1 - score / max);
+
+  return (
+    <svg width="104" height="104" viewBox="0 0 104 104" className="mx-auto">
+      <circle cx="52" cy="52" r={radius} fill="none" stroke="var(--line)" strokeWidth="8" />
+      <motion.circle
+        cx="52"
+        cy="52"
+        r={radius}
+        fill="none"
+        stroke="var(--ocean)"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeDasharray={circumference}
+        initial={{ strokeDashoffset: circumference }}
+        animate={{ strokeDashoffset: offset }}
+        transition={{ duration: 1, ease: EASE }}
+        transform="rotate(-90 52 52)"
+      />
+      <text x="52" y="59" textAnchor="middle" fontSize="26" fontWeight="800" fill="var(--ink)">
+        {score}
+      </text>
+    </svg>
+  );
+}
+
 export default function Assessment() {
   const [answers, setAnswers] = useState<number[]>([]);
   const currentIndex = answers.length;
@@ -190,6 +223,10 @@ export default function Assessment() {
   function selectOption(points: number) {
     if (isComplete) return;
     setAnswers((a) => [...a, points]);
+  }
+
+  function goBack() {
+    setAnswers((a) => a.slice(0, -1));
   }
 
   function restart() {
@@ -215,7 +252,6 @@ export default function Assessment() {
   const weakest = (Object.keys(categoryPct) as Category[]).reduce((a, b) =>
     categoryPct[a] <= categoryPct[b] ? a : b
   );
-  const WeakIcon = CATEGORY_ICON[weakest];
 
   return (
     <>
@@ -335,7 +371,25 @@ export default function Assessment() {
                 transition={{ duration: 0.4, ease: EASE }}
                 className="card p-8"
               >
-                <div className="mb-6 h-1.5 w-full overflow-hidden rounded-full bg-ink/5">
+                <div className="mb-4 flex items-center justify-between">
+                  {currentIndex > 0 ? (
+                    <button
+                      type="button"
+                      onClick={goBack}
+                      className="inline-flex items-center gap-1.5 text-[12.5px] font-bold text-ink-faint transition-colors hover:text-ink"
+                    >
+                      <ArrowLeft className="h-3.5 w-3.5" strokeWidth={2.5} />
+                      Back
+                    </button>
+                  ) : (
+                    <span />
+                  )}
+                  <span className="text-[12.5px] font-bold text-ink-faint">
+                    {currentIndex + 1} / {QUESTIONS.length}
+                  </span>
+                </div>
+
+                <div className="h-2 w-full overflow-hidden rounded-full bg-ink/5">
                   <motion.div
                     className="h-full rounded-full bg-ocean"
                     animate={{ width: `${(currentIndex / QUESTIONS.length) * 100}%` }}
@@ -343,11 +397,18 @@ export default function Assessment() {
                   />
                 </div>
 
-                <span className="text-[12px] font-bold uppercase tracking-[0.08em] text-ocean">
-                  Question {currentIndex + 1} of {QUESTIONS.length} &middot; {CATEGORY_COPY[QUESTIONS[currentIndex].category].label}
-                </span>
+                <div className="mt-5 flex items-center gap-2.5">
+                  <IconTile
+                    icon={CATEGORY_META[QUESTIONS[currentIndex].category].icon}
+                    color={CATEGORY_META[QUESTIONS[currentIndex].category].color}
+                    size="sm"
+                  />
+                  <span className="text-[12.5px] font-bold uppercase tracking-[0.08em] text-ocean">
+                    {CATEGORY_META[QUESTIONS[currentIndex].category].label}
+                  </span>
+                </div>
 
-                <h3 className="mt-3 text-balance text-xl font-bold text-ink">
+                <h3 className="mt-4 text-balance text-xl font-bold text-ink">
                   {QUESTIONS[currentIndex].text}
                 </h3>
 
@@ -358,8 +419,11 @@ export default function Assessment() {
                       type="button"
                       whileTap={{ scale: 0.98 }}
                       onClick={() => selectOption(opt.points)}
-                      className="rounded-xl border border-line px-4 py-3.5 text-left text-[14.5px] font-bold text-ink transition-colors hover:border-ocean hover:bg-ocean/5"
+                      className="group flex items-center gap-3 rounded-xl border border-line px-4 py-3.5 text-left text-[14.5px] font-bold text-ink transition-colors hover:border-ocean hover:bg-ocean/5"
                     >
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-line transition-colors group-hover:border-ocean">
+                        <span className="h-2 w-2 rounded-full bg-ocean opacity-0 transition-opacity group-hover:opacity-100" />
+                      </span>
                       {opt.label}
                     </motion.button>
                   ))}
@@ -374,36 +438,38 @@ export default function Assessment() {
                 className="card overflow-hidden"
               >
                 <div className="p-8 text-center">
-                  <span className="flex items-center justify-center gap-2 text-[13px] font-bold uppercase tracking-[0.08em] text-ink-dim">
+                  <ScoreRing score={totalScore} />
+                  <span className="mt-4 flex items-center justify-center gap-2 text-[13px] font-bold uppercase tracking-[0.08em] text-ink-dim">
                     <span className={`h-2 w-2 rounded-full ${tier.dot}`} />
-                    {tier.label} &middot; {totalScore}/20
+                    {tier.label}
                   </span>
                   <h3 className="mt-3 text-balance font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
                     {tier.headline}
                   </h3>
 
-                  <div className="mx-auto mt-6 flex max-w-sm items-start gap-3 rounded-2xl bg-coral/[0.08] px-5 py-4 text-left">
-                    <WeakIcon className="mt-0.5 h-5 w-5 shrink-0 text-coral" strokeWidth={2} />
-                    <div>
-                      <p className="text-[13.5px] font-bold text-ink">
-                        Your biggest opportunity: {CATEGORY_COPY[weakest].label}
+                  <div className="mx-auto mt-7 grid max-w-lg grid-cols-1 gap-4 text-left sm:grid-cols-2">
+                    <div className="rounded-2xl bg-coral/[0.08] p-5">
+                      <IconTile icon={CATEGORY_META[weakest].icon} color="coral" size="sm" />
+                      <p className="mt-3 text-[13.5px] font-bold text-ink">
+                        Biggest opportunity: {CATEGORY_META[weakest].label}
                       </p>
-                      <p className="mt-1 text-[13px] leading-relaxed text-ink-dim">
-                        {CATEGORY_COPY[weakest].insight}
+                      <p className="mt-1.5 text-[13px] leading-relaxed text-ink-dim">
+                        {CATEGORY_META[weakest].insight}
                       </p>
                     </div>
-                  </div>
 
-                  <div className="mx-auto mt-6 max-w-sm rounded-2xl border border-line p-5 text-left">
-                    <p className="text-[12px] font-bold uppercase tracking-[0.08em] text-ocean">
-                      Recommended starting point
-                    </p>
-                    <p className="mt-1.5 text-[16px] font-bold text-ink">
-                      {tier.plan} <span className="text-ink-faint">&middot; {tier.price}</span>
-                    </p>
-                    <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-dim">
-                      {tier.planCopy}
-                    </p>
+                    <div className="rounded-2xl border border-line p-5">
+                      <IconTile icon={Compass} color="ocean" size="sm" />
+                      <p className="mt-3 text-[12px] font-bold uppercase tracking-[0.08em] text-ocean">
+                        Recommended starting point
+                      </p>
+                      <p className="mt-1.5 text-[16px] font-bold text-ink">
+                        {tier.plan} <span className="text-ink-faint">&middot; {tier.price}</span>
+                      </p>
+                      <p className="mt-1.5 text-[13px] leading-relaxed text-ink-dim">
+                        {tier.planCopy}
+                      </p>
+                    </div>
                   </div>
 
                   <div className="mt-8 flex flex-col items-center gap-3">
@@ -414,6 +480,15 @@ export default function Assessment() {
                       <Link href="/#pricing" className="transition-colors hover:text-ink">
                         See pricing
                       </Link>
+                      <span className="text-ink-faint">&middot;</span>
+                      <button
+                        type="button"
+                        onClick={goBack}
+                        className="inline-flex items-center gap-1.5 transition-colors hover:text-ink"
+                      >
+                        <ArrowLeft className="h-3.5 w-3.5" strokeWidth={2.5} />
+                        Back
+                      </button>
                       <span className="text-ink-faint">&middot;</span>
                       <button
                         type="button"
