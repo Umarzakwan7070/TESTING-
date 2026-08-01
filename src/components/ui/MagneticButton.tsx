@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { ReactNode, useRef } from "react";
+import { ReactNode } from "react";
 import Link from "next/link";
 
 export function MagneticButton({
@@ -10,22 +10,22 @@ export function MagneticButton({
   variant = "primary",
   className = "",
   onClick,
+  type = "button",
 }: {
   children: ReactNode;
   href?: string;
   variant?: "primary" | "secondary";
   className?: string;
   onClick?: () => void;
+  type?: "button" | "submit";
 }) {
-  const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 260, damping: 20, mass: 0.3 });
   const springY = useSpring(y, { stiffness: 260, damping: 20, mass: 0.3 });
 
-  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
+  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
     const relX = e.clientX - rect.left - rect.width / 2;
     const relY = e.clientY - rect.top - rect.height / 2;
     x.set(relX * 0.25);
@@ -44,9 +44,25 @@ export function MagneticButton({
       ? "bg-ocean text-white hover:bg-ocean-deep"
       : "bg-ink/5 text-ink hover:bg-ink/[0.08]";
 
-  const Content = (
-    <motion.div
-      ref={ref}
+  if (href) {
+    return (
+      <Link href={href} className="inline-block rounded-full">
+        <motion.div
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={{ x: springX, y: springY }}
+          whileTap={{ scale: 0.96 }}
+          className={`${base} ${styles} ${className}`}
+        >
+          {children}
+        </motion.div>
+      </Link>
+    );
+  }
+
+  return (
+    <motion.button
+      type={type}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ x: springX, y: springY }}
@@ -55,16 +71,6 @@ export function MagneticButton({
       onClick={onClick}
     >
       {children}
-    </motion.div>
+    </motion.button>
   );
-
-  if (href) {
-    return (
-      <Link href={href} className="inline-block">
-        {Content}
-      </Link>
-    );
-  }
-
-  return Content;
 }

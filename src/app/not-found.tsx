@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <div className="relative flex flex-1 flex-col overflow-x-clip bg-foam">
       <Nav />
-      <main className="flex flex-1 flex-col items-center justify-center px-6 py-32 text-center">
+      <main id="main-content" className="flex flex-1 flex-col items-center justify-center px-6 py-32 text-center">
         <span className="text-[13px] font-bold uppercase tracking-[0.08em] text-coral">404</span>
         <h1 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
           Looks like this page drifted away.

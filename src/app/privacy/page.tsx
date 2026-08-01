@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <div className="relative flex flex-1 flex-col overflow-x-clip bg-foam">
       <Nav />
-      <main className="flex flex-1 flex-col pt-32 pb-24">
+      <main id="main-content" className="flex flex-1 flex-col pt-32 pb-24">
         <div className="mx-auto max-w-2xl px-6">
           <h1 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Privacy Policy

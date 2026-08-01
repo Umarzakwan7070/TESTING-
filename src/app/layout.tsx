@@ -64,6 +64,12 @@ export default function RootLayout({
             priceRange: "$399-$1499",
           })}
         </script>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-ocean focus:px-5 focus:py-3 focus:text-[14px] focus:font-bold focus:text-white"
+        >
+          Skip to content
+        </a>
         <SmoothScroll>{children}</SmoothScroll>
         <CouponPopup />
       </body>

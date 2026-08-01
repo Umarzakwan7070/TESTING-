@@ -40,18 +40,24 @@ const FAQS = [
   },
 ];
 
-function FAQItem({ q, a, last }: { q: string; a: string; last: boolean }) {
+function FAQItem({ q, a, last, index }: { q: string; a: string; last: boolean; index: number }) {
   const [open, setOpen] = useState(false);
+  const buttonId = `faq-button-${index}`;
+  const panelId = `faq-panel-${index}`;
   return (
     <div className={last ? "" : "border-b border-line"}>
       <button
+        id={buttonId}
         onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-controls={panelId}
         className="flex w-full items-center justify-between gap-6 px-5 py-4 text-left"
       >
         <span className="text-[15px] font-medium text-ink">{q}</span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          aria-hidden="true"
           className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-ink/5 text-ink-dim"
         >
           <Plus className="h-3.5 w-3.5" />
@@ -60,6 +66,9 @@ function FAQItem({ q, a, last }: { q: string; a: string; last: boolean }) {
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
+            id={panelId}
+            role="region"
+            aria-labelledby={buttonId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -89,7 +98,7 @@ export default function FAQ() {
 
         <FadeIn delay={0.1} className="card mt-10 overflow-hidden">
           {FAQS.map((f, i) => (
-            <FAQItem key={f.q} q={f.q} a={f.a} last={i === FAQS.length - 1} />
+            <FAQItem key={f.q} q={f.q} a={f.a} last={i === FAQS.length - 1} index={i} />
           ))}
         </FadeIn>
       </div>
