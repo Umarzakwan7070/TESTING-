@@ -18,6 +18,10 @@ const TRANSFORMATIONS = [
     solution: "A page that explains and pre-qualifies for you",
   },
   {
+    problem: "Your business depends on you being available",
+    solution: "Your website keeps working, even when you're not",
+  },
+  {
     problem: "Your website represents an older version of the business",
     solution: "A presence that finally matches your standard",
   },
