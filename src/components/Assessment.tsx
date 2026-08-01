@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Eye, MousePointerClick, ShieldCheck, TrendingUp, Users, Target, RotateCcw, ArrowLeft, Compass } from "lucide-react";
-import { FadeIn, Stagger, StaggerItem } from "./ui/FadeIn";
+import { Eye, MousePointerClick, ShieldCheck, RotateCcw, ArrowLeft, Compass } from "lucide-react";
 import { MagneticButton } from "./ui/MagneticButton";
 import { IconTile } from "./ui/IconTile";
+import ResearchStats from "./ResearchStats";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -162,30 +162,6 @@ const TIER_COPY = {
   },
 } as const;
 
-const STATS = [
-  {
-    icon: Users,
-    stat: "76%",
-    text: "of consumers research a company online before visiting or buying from them.",
-    source: "Small business website research",
-    href: "https://review42.com/resources/what-percentage-of-small-businesses-have-a-website/",
-  },
-  {
-    icon: TrendingUp,
-    stat: "39%",
-    text: "more revenue, on average, for small businesses with a website vs. those without one.",
-    source: "Small business website research",
-    href: "https://rudys.ai/small-business-website-statistics/",
-  },
-  {
-    icon: Target,
-    stat: "4.02%",
-    text: "average conversion rate for a dedicated landing page — nearly double the 2.35% for a general website page.",
-    source: "Landing page conversion benchmarks",
-    href: "https://www.involve.me/blog/landing-page-statistics",
-  },
-];
-
 function ScoreRing({ score, max = 20 }: { score: number; max?: number }) {
   const radius = 42;
   const circumference = 2 * Math.PI * radius;
@@ -318,45 +294,10 @@ export default function Assessment() {
         </div>
       </section>
 
-      {/* Research */}
-      <section className="relative bg-sand py-20">
-        <div className="mx-auto max-w-4xl px-6">
-          <FadeIn className="mx-auto max-w-xl text-center">
-            <span className="text-[13px] font-bold uppercase tracking-[0.08em] text-ocean">
-              Why this matters
-            </span>
-            <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              The gap between businesses with a real online presence — and businesses without one
-            </h2>
-          </FadeIn>
-
-          <Stagger className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {STATS.map((s) => (
-              <StaggerItem key={s.stat}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="card block h-full p-6 transition-transform hover:-translate-y-1"
-                >
-                  <s.icon className="h-5 w-5 text-ocean" strokeWidth={2} />
-                  <div className="mt-4 font-display text-3xl font-bold text-ink">{s.stat}</div>
-                  <p className="mt-2 text-[13.5px] leading-relaxed text-ink-dim">{s.text}</p>
-                  <p className="mt-3 text-[11.5px] font-bold text-ink-faint">{s.source} &rarr;</p>
-                </a>
-              </StaggerItem>
-            ))}
-          </Stagger>
-
-          <FadeIn delay={0.2} className="mx-auto mt-8 max-w-lg text-center">
-            <p className="text-[15px] leading-relaxed text-ink-dim">
-              That&apos;s exactly the gap I close — with a Landing Page, a
-              full Website, or a Custom build, depending on where you&apos;re
-              starting from.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+      <ResearchStats
+        heading="The gap between businesses with a real online presence — and businesses without one"
+        closing="That's exactly the gap I close — with a Landing Page, a full Website, or a Custom build, depending on where you're starting from."
+      />
 
       {/* Quiz */}
       <section id="quiz" className="relative py-24">

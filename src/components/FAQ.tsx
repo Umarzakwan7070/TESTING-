@@ -27,6 +27,10 @@ const FAQS = [
     a: "Yes. Once it's built and paid for, the website is yours. The optional $99/month after month 3 covers hosting and light maintenance if you'd like me to keep managing it — you're never locked in, and you're free to cancel and take the site elsewhere at any time.",
   },
   {
+    q: "Do you guarantee leads?",
+    a: "No. A website is one part of customer acquisition. I focus on giving your business a clear, credible and conversion-focused online presence, but results also depend on your offer, traffic, market and sales process.",
+  },
+  {
     q: "How fast can you actually deliver?",
     a: "Landing pages typically take 5–7 days from kickoff call to live page. Websites take a bit longer depending on how many pages you need — I'll give you an exact timeline on the discovery call.",
   },
