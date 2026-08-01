@@ -1,5 +1,6 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem } from "./ui/FadeIn";
 
 const STATS = [
@@ -15,6 +16,14 @@ const STATS = [
     source: "BrightLocal Consumer Review Survey",
     href: "https://www.brightlocal.com/research/local-consumer-review-survey-2024/",
   },
+];
+
+const TRUST_ITEMS = [
+  "Conversion-focused",
+  "Mobile-first",
+  "SEO-ready",
+  "Built for enquiries",
+  "You own the website",
 ];
 
 export default function ProofStrip() {
@@ -48,6 +57,15 @@ export default function ProofStrip() {
             </StaggerItem>
           ))}
         </Stagger>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 border-t border-line pt-7 text-center">
+          {TRUST_ITEMS.map((item) => (
+            <span key={item} className="flex items-center gap-1.5 text-[12.5px] font-bold text-ink-dim">
+              <Check className="h-3.5 w-3.5 shrink-0 text-ocean" strokeWidth={3} />
+              {item}
+            </span>
+          ))}
+        </div>
       </FadeIn>
     </section>
   );

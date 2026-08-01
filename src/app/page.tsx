@@ -1,10 +1,8 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import ProofStrip from "@/components/ProofStrip";
-import TrustStrip from "@/components/TrustStrip";
 import PainPoints from "@/components/PainPoints";
 import ResearchStats from "@/components/ResearchStats";
-import LocalReality from "@/components/LocalReality";
 import AlwaysAvailable from "@/components/AlwaysAvailable";
 import Showcase from "@/components/Showcase";
 import Features from "@/components/Features";
@@ -22,13 +20,12 @@ export default function Home() {
       <main id="main-content" className="flex flex-1 flex-col">
         <Hero />
         <ProofStrip />
-        <TrustStrip />
         <PainPoints />
         <ResearchStats
           heading="The gap between businesses with a real online presence — and businesses without one"
           intro="Your customers don't always contact you first. Many look you up, compare their options and form an impression before you ever know they were there."
+          includeLocal
         />
-        <LocalReality />
         <AlwaysAvailable />
         <Showcase />
         <Features />

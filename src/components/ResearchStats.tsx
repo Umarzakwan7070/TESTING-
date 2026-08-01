@@ -1,6 +1,6 @@
 "use client";
 
-import { Star, TrendingUp, Target } from "lucide-react";
+import { Star, TrendingUp, Target, MapPin } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem } from "./ui/FadeIn";
 
 const STATS = [
@@ -27,17 +27,29 @@ const STATS = [
   },
 ];
 
+const LOCAL_STAT = {
+  icon: MapPin,
+  stat: "74.4%",
+  text: "of Malaysian establishments had web presence in 2024 — up from 72.7% in 2023.",
+  source: "DOSM (Dept. of Statistics Malaysia)",
+  href: "https://www.dosm.gov.my/portal-main/release-content/usage-of-ict-and-e-commerce-by-establishment2025",
+};
+
 export default function ResearchStats({
   eyebrow = "Why this matters",
   heading,
   intro,
   closing,
+  includeLocal = false,
 }: {
   eyebrow?: string;
   heading: string;
   intro?: string;
   closing?: string;
+  includeLocal?: boolean;
 }) {
+  const stats = includeLocal ? [...STATS, LOCAL_STAT] : STATS;
+
   return (
     <section className="relative bg-sand py-20">
       <div className="mx-auto max-w-4xl px-6">
@@ -53,8 +65,12 @@ export default function ResearchStats({
           )}
         </FadeIn>
 
-        <Stagger className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {STATS.map((s) => (
+        <Stagger
+          className={`mt-10 grid grid-cols-1 gap-4 ${
+            includeLocal ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3"
+          }`}
+        >
+          {stats.map((s) => (
             <StaggerItem key={s.stat}>
               <a
                 href={s.href}
