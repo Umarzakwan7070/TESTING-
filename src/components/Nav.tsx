@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { MagneticButton } from "./ui/MagneticButton";
 
@@ -18,6 +19,8 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
+  const pathname = usePathname();
+  const isAssessmentPage = pathname === "/assessment";
 
   useMotionValueEvent(scrollY, "change", (v) => {
     setScrolled(v > 24);
@@ -116,7 +119,7 @@ export default function Nav() {
     </motion.header>
 
     <AnimatePresence>
-      {scrolled && (
+      {scrolled && !isAssessmentPage && (
         <motion.div
           initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

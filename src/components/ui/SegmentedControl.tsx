@@ -17,7 +17,7 @@ export function SegmentedControl<T extends string>({
         <button
           key={opt.value}
           onClick={() => onChange(opt.value)}
-          className={`relative z-10 rounded-full px-5 py-2 text-[14px] font-bold transition-colors duration-200 ${
+          className={`relative z-10 whitespace-nowrap rounded-full px-3 py-2 text-[13px] font-bold transition-colors duration-200 sm:px-5 sm:text-[14px] ${
             value === opt.value ? "text-ink" : "text-ink-dim"
           }`}
         >
