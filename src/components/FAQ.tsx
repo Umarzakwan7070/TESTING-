@@ -23,6 +23,10 @@ const FAQS = [
     a: "Websites include free hosting for the first 3 months. After that, it's $99/month, which covers hosting plus small maintenance and updates. You can cancel anytime after the first 3 months.",
   },
   {
+    q: "Do I own the website?",
+    a: "Yes. Once it's built and paid for, the website is yours. The optional $99/month after month 3 covers hosting and light maintenance if you'd like me to keep managing it — you're never locked in, and you're free to cancel and take the site elsewhere at any time.",
+  },
+  {
     q: "How fast can you actually deliver?",
     a: "Landing pages typically take 5–7 days from kickoff call to live page. Websites take a bit longer depending on how many pages you need — I'll give you an exact timeline on the discovery call.",
   },

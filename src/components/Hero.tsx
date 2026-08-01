@@ -35,7 +35,7 @@ export default function Hero() {
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-pulse-soft rounded-full bg-coral" />
           </span>
-          New studio — founding-client pricing
+          Landing pages & websites — founding-client pricing
         </motion.div>
 
         <h1 className="text-balance text-center font-display font-extrabold leading-[1.02] tracking-tight text-ink">
@@ -70,19 +70,22 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.8, ease: EASE }}
           className="mt-10 flex flex-col items-center justify-center gap-4"
         >
-          <MagneticButton href="mailto:hello@surfingleads.co">
-            Book a free call
+          <MagneticButton href="/assessment#quiz">
+            Get a free website assessment
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M3 7.5H12M12 7.5L8 3.5M12 7.5L8 11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </MagneticButton>
+          <p className="text-[12px] font-bold text-ink-faint">
+            No hard sell &middot; Practical recommendations &middot; No obligation
+          </p>
           <div className="flex items-center gap-3 text-[13.5px] font-bold text-ink-dim">
-            <a href="#pricing" className="transition-colors hover:text-ink">
-              See pricing
+            <a href="mailto:hello@surfingleads.co" className="transition-colors hover:text-ink">
+              Book a free call
             </a>
             <span className="text-ink-faint">&middot;</span>
             <a href="#work" className="transition-colors hover:text-ink">
-              See example work
+              See my work
             </a>
           </div>
         </motion.div>

@@ -12,7 +12,6 @@ const LINKS = [
   { href: "/#about", label: "About" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
-  { href: "/assessment", label: "Free Assessment" },
 ];
 
 export default function Nav() {
@@ -45,7 +44,7 @@ export default function Nav() {
           SurfingLeads
         </Link>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-line bg-white/70 p-1.5 backdrop-blur-sm md:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-line bg-white/70 p-1.5 backdrop-blur-sm lg:flex">
           {LINKS.map((link) => (
             <Link
               key={link.href}
@@ -57,15 +56,15 @@ export default function Nav() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <MagneticButton href="/#contact" className="!px-5 !py-2 !text-[14px]">
-            Get a quote
+        <div className="hidden lg:block">
+          <MagneticButton href="/assessment#quiz" className="!px-5 !py-2 !text-[14px]">
+            Free Assessment
           </MagneticButton>
         </div>
 
         <button
           onClick={() => setOpen((o) => !o)}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-ink md:hidden"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-ink lg:hidden"
           aria-label="Toggle menu"
         >
           <div className="relative h-4 w-5">
@@ -92,7 +91,7 @@ export default function Nav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="card absolute inset-x-3 top-[4rem] flex flex-col gap-1 p-3 md:hidden"
+            className="card absolute inset-x-3 top-[4rem] flex flex-col gap-1 p-3 lg:hidden"
           >
             {LINKS.map((link) => (
               <Link
@@ -105,11 +104,11 @@ export default function Nav() {
               </Link>
             ))}
             <Link
-              href="/#contact"
+              href="/assessment#quiz"
               onClick={() => setOpen(false)}
               className="mt-2 rounded-xl bg-ocean px-4 py-3 text-center text-[15px] font-bold text-white"
             >
-              Get a quote
+              Free Assessment
             </Link>
           </motion.div>
         )}
@@ -118,16 +117,20 @@ export default function Nav() {
 
     <AnimatePresence>
       {scrolled && (
-        <motion.a
-          href="mailto:hello@surfingleads.co"
+        <motion.div
           initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 80, opacity: 0 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-x-4 bottom-4 z-40 flex items-center justify-center rounded-full bg-ocean px-6 py-3.5 text-[15px] font-bold text-white shadow-lg shadow-ocean/30 sm:hidden"
+          className="fixed inset-x-4 bottom-4 z-40 lg:hidden"
         >
-          Book a free call
-        </motion.a>
+          <Link
+            href="/assessment#quiz"
+            className="flex items-center justify-center rounded-full bg-ocean px-6 py-3.5 text-[15px] font-bold text-white shadow-lg shadow-ocean/30"
+          >
+            Free Website Assessment
+          </Link>
+        </motion.div>
       )}
     </AnimatePresence>
     </>

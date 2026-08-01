@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import TrustStrip from "@/components/TrustStrip";
 import PainPoints from "@/components/PainPoints";
 import FounderBar from "@/components/FounderBar";
 import Features from "@/components/Features";
@@ -16,6 +17,7 @@ export default function Home() {
       <Nav />
       <main className="flex flex-1 flex-col">
         <Hero />
+        <TrustStrip />
         <PainPoints />
         <FounderBar />
         <Features />

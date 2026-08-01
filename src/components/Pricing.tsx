@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, ShieldCheck } from "lucide-react";
+import { Check, ShieldCheck, Key } from "lucide-react";
 import { FadeIn } from "./ui/FadeIn";
 import { SegmentedControl } from "./ui/SegmentedControl";
 import { MagneticButton } from "./ui/MagneticButton";
@@ -130,6 +130,10 @@ export default function Pricing() {
               <p className="mt-4 flex items-center justify-center gap-1.5 text-[12.5px] font-bold text-ocean">
                 <ShieldCheck className="h-3.5 w-3.5" strokeWidth={2.5} />
                 Free revisions until you&apos;re happy
+              </p>
+              <p className="mt-1.5 flex items-center justify-center gap-1.5 text-[12.5px] font-bold text-ink-dim">
+                <Key className="h-3.5 w-3.5 text-ocean" strokeWidth={2.5} />
+                You own the website outright — no lock-in
               </p>
 
               <p className="mt-3 text-center text-[12.5px] leading-relaxed text-ink-faint">

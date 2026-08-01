@@ -19,19 +19,28 @@ export default function CTA() {
               Stop losing customers to a website that undersells you.
             </h2>
             <p className="mx-auto mt-5 max-w-md text-balance text-[16px] leading-relaxed text-white/80">
-              Book a free 20-minute call. I&apos;ll tell you honestly whether a
-              landing page or a full website is the right fit for you.
+              Start with a free website assessment and I&apos;ll show you
+              honestly what I&apos;d improve first — no pressure either way.
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-4">
               <MagneticButton
-                href="mailto:hello@surfingleads.co"
+                href="/assessment#quiz"
                 className="!bg-sun !text-ink !shadow-lg !shadow-sun/40"
               >
-                Book a free call
+                Get my free website assessment
               </MagneticButton>
-              <a href="#pricing" className="text-[13.5px] font-bold text-white/70 transition-colors hover:text-white">
-                View pricing
-              </a>
+              <p className="text-[12.5px] font-bold text-white/60">
+                No obligation &middot; No hard sell &middot; Practical recommendations
+              </p>
+              <div className="flex items-center gap-3 text-[13.5px] font-bold text-white/70">
+                <a href="mailto:hello@surfingleads.co" className="transition-colors hover:text-white">
+                  Book a free call
+                </a>
+                <span className="text-white/40">&middot;</span>
+                <a href="#pricing" className="transition-colors hover:text-white">
+                  View pricing
+                </a>
+              </div>
             </div>
 
             <p className="mt-6 flex items-center justify-center gap-1.5 text-[13px] font-bold text-white/70">
