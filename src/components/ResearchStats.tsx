@@ -1,15 +1,15 @@
 "use client";
 
-import { Users, TrendingUp, Target } from "lucide-react";
+import { Star, TrendingUp, Target } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem } from "./ui/FadeIn";
 
 const STATS = [
   {
-    icon: Users,
-    stat: "76%",
-    text: "of consumers look for a company's online presence before visiting in person.",
-    source: "Visual Objects survey",
-    href: "https://www.prnewswire.com/news-releases/76-of-consumers-look-at-online-presence-before-physically-visiting-a-business-301272462.html",
+    icon: Star,
+    stat: "93%",
+    text: "of consumers read online reviews before visiting a local business.",
+    source: "BrightLocal Consumer Review Survey",
+    href: "https://www.brightlocal.com/research/local-consumer-review-survey-2024/",
   },
   {
     icon: TrendingUp,
