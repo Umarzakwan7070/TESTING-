@@ -4,6 +4,7 @@ import ProofStrip from "@/components/ProofStrip";
 import TrustStrip from "@/components/TrustStrip";
 import PainPoints from "@/components/PainPoints";
 import ResearchStats from "@/components/ResearchStats";
+import LocalReality from "@/components/LocalReality";
 import AlwaysAvailable from "@/components/AlwaysAvailable";
 import Showcase from "@/components/Showcase";
 import Features from "@/components/Features";
@@ -27,6 +28,7 @@ export default function Home() {
           heading="The gap between businesses with a real online presence — and businesses without one"
           intro="Your customers don't always contact you first. Many look you up, compare their options and form an impression before you ever know they were there."
         />
+        <LocalReality />
         <AlwaysAvailable />
         <Showcase />
         <Features />
