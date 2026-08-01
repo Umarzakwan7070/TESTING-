@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export function MagneticButton({
@@ -11,6 +11,7 @@ export function MagneticButton({
   className = "",
   onClick,
   type = "button",
+  idlePulse = false,
 }: {
   children: ReactNode;
   href?: string;
@@ -18,11 +19,30 @@ export function MagneticButton({
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit";
+  idlePulse?: boolean;
 }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 260, damping: 20, mass: 0.3 });
   const springY = useSpring(y, { stiffness: 260, damping: 20, mass: 0.3 });
+
+  const [pulse, setPulse] = useState(false);
+  const interactedRef = useRef(false);
+
+  useEffect(() => {
+    if (!idlePulse) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const timer = setTimeout(() => {
+      if (!interactedRef.current) setPulse(true);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, [idlePulse]);
+
+  function cancelPulse() {
+    interactedRef.current = true;
+    setPulse(false);
+  }
 
   function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -44,15 +64,24 @@ export function MagneticButton({
       ? "bg-ocean text-white hover:bg-ocean-deep"
       : "bg-ink/5 text-ink hover:bg-ink/[0.08]";
 
+  const pulseProps = pulse
+    ? {
+        animate: { scale: [1, 1.035, 1, 1.035, 1] },
+        transition: { duration: 1.6, ease: "easeInOut" as const },
+        onAnimationComplete: () => setPulse(false),
+      }
+    : {};
+
   if (href) {
     return (
-      <Link href={href} className="inline-block rounded-full">
+      <Link href={href} className="inline-block rounded-full" onMouseEnter={cancelPulse} onClick={cancelPulse}>
         <motion.div
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           style={{ x: springX, y: springY }}
           whileTap={{ scale: 0.96 }}
           className={`${base} ${styles} ${className}`}
+          {...pulseProps}
         >
           {children}
         </motion.div>
@@ -65,10 +94,15 @@ export function MagneticButton({
       type={type}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseEnter={cancelPulse}
       style={{ x: springX, y: springY }}
       whileTap={{ scale: 0.96 }}
       className={`${base} ${styles} ${className}`}
-      onClick={onClick}
+      onClick={() => {
+        cancelPulse();
+        onClick?.();
+      }}
+      {...pulseProps}
     >
       {children}
     </motion.button>

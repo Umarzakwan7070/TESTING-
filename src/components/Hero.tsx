@@ -70,7 +70,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.8, ease: EASE }}
           className="mt-10 flex flex-col items-center justify-center gap-4"
         >
-          <MagneticButton href="/assessment#quiz">
+          <MagneticButton href="/assessment#quiz" idlePulse>
             Get a free website assessment
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M3 7.5H12M12 7.5L8 3.5M12 7.5L8 11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

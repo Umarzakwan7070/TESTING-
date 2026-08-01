@@ -2,16 +2,17 @@
 
 import { Check } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem } from "./ui/FadeIn";
+import { CountUp } from "./ui/CountUp";
 
 const STATS = [
   {
-    stat: "76%",
+    value: 76,
     text: "of consumers look for a company's online presence before visiting in person.",
     source: "Visual Objects survey",
     href: "https://www.prnewswire.com/news-releases/76-of-consumers-look-at-online-presence-before-physically-visiting-a-business-301272462.html",
   },
   {
-    stat: "93%",
+    value: 93,
     text: "of consumers read online reviews before visiting a local business.",
     source: "BrightLocal Consumer Review Survey",
     href: "https://www.brightlocal.com/research/local-consumer-review-survey-2024/",
@@ -33,13 +34,13 @@ export default function ProofStrip() {
         <Stagger className="flex flex-col gap-8 md:flex-row md:gap-0 md:divide-x md:divide-line">
           {STATS.map((s, i) => (
             <StaggerItem
-              key={s.stat}
+              key={s.value}
               className={`flex flex-1 flex-col items-center gap-4 text-center md:flex-row md:items-center md:gap-6 md:text-left ${
                 i === 0 ? "md:pr-8" : "md:pl-8"
               }`}
             >
               <div className="shrink-0 font-display text-5xl font-bold tracking-tight text-ocean sm:text-6xl">
-                {s.stat}
+                <CountUp value={s.value} suffix="%" />
               </div>
               <div>
                 <p className="max-w-xs text-balance text-[14.5px] leading-relaxed text-ink-dim sm:text-[15px]">
