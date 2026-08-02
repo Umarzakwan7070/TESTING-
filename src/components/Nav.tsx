@@ -40,14 +40,16 @@ export default function Nav() {
     >
       <div
         className={`flex w-full items-center justify-between px-5 py-3 transition-all duration-300 md:px-8 ${
-          scrolled ? "border-b border-line bg-foam/85 backdrop-blur-md" : "border-b border-transparent"
+          scrolled
+            ? "border-b border-white/40 bg-foam/70 shadow-[0_1px_0_rgba(255,255,255,0.5)_inset] backdrop-blur-2xl backdrop-saturate-150"
+            : "border-b border-transparent"
         }`}
       >
         <Link href="/#top" className="font-display text-[18px] font-bold text-ink">
           SurfingLeads
         </Link>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-line bg-white/70 p-1.5 backdrop-blur-sm lg:flex">
+        <nav className="glass glass-pill hidden items-center gap-1 p-1.5 lg:flex">
           {LINKS.map((link) => (
             <Link
               key={link.href}
@@ -94,7 +96,7 @@ export default function Nav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="card absolute inset-x-3 top-[4rem] flex flex-col gap-1 p-3 lg:hidden"
+            className="glass glass-solid absolute inset-x-3 top-[4rem] flex flex-col gap-1 p-3 lg:hidden"
           >
             {LINKS.map((link) => (
               <Link
