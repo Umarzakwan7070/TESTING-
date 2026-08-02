@@ -8,11 +8,11 @@
   --ink-dim: #4c6b75;
   --ink-faint: #5f7c85;
   --line: rgba(11, 37, 48, 0.1);
-  --ocean: #3d7873;
-  --ocean-deep: #2a5a56;
-  --ocean-night: #17322f;
-  --coral: #c36847;
-  --sun: #ddb05c;
+  --ocean: #1b7a72;
+  --ocean-deep: #145c56;
+  --ocean-night: #0b322f;
+  --coral: #b04422;
+  --sun: #d99a2b;
 }
 
 @theme inline {

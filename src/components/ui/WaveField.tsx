@@ -31,17 +31,17 @@ export function WaveField({ className = "" }: { className?: string }) {
       <svg width="0" height="0" className="absolute">
         <defs>
           <linearGradient id="waveFarGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#d6e8e2" stopOpacity="0.35" />
+            <stop offset="0%" stopColor="#bfe0da" stopOpacity="0.35" />
             <stop offset="100%" stopColor="var(--ocean)" stopOpacity="0.14" />
           </linearGradient>
           <linearGradient id="waveMidGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#a8ccc5" stopOpacity="0.55" />
+            <stop offset="0%" stopColor="#8cc9be" stopOpacity="0.55" />
             <stop offset="45%" stopColor="var(--ocean)" stopOpacity="0.22" />
             <stop offset="100%" stopColor="var(--ocean-deep)" stopOpacity="0.2" />
           </linearGradient>
           <linearGradient id="waveNearGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#ffffff" stopOpacity="0.75" />
-            <stop offset="10%" stopColor="#dcede7" stopOpacity="0.55" />
+            <stop offset="10%" stopColor="#cde8e1" stopOpacity="0.55" />
             <stop offset="40%" stopColor="var(--ocean)" stopOpacity="0.32" />
             <stop offset="100%" stopColor="var(--ocean-deep)" stopOpacity="0.34" />
           </linearGradient>
