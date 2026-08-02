@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --foam: #f2fbfc;
+  --foam: #f4f6f4;
   --card: #ffffff;
   --sand: #fff7e8;
   --ink: #0b2530;
   --ink-dim: #4c6b75;
   --ink-faint: #5f7c85;
   --line: rgba(11, 37, 48, 0.1);
-  --ocean: #0ea5b7;
-  --ocean-deep: #075c6b;
-  --ocean-night: #06313d;
-  --coral: #ff6b5b;
-  --sun: #ffc857;
+  --ocean: #3d7873;
+  --ocean-deep: #2a5a56;
+  --ocean-night: #17322f;
+  --coral: #c36847;
+  --sun: #ddb05c;
 }
 
 @theme inline {
