@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import IndustryTicker from "@/components/IndustryTicker";
 import ProofStrip from "@/components/ProofStrip";
 import PainPoints from "@/components/PainPoints";
 import ResearchStats from "@/components/ResearchStats";
@@ -19,6 +20,7 @@ export default function Home() {
       <Nav />
       <main id="main-content" className="flex flex-1 flex-col">
         <Hero />
+        <IndustryTicker />
         <ProofStrip />
         <PainPoints />
         <ResearchStats

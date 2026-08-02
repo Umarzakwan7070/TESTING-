@@ -167,6 +167,9 @@ h3,
 .animate-wave-3 {
   animation: wave-drift 28s linear infinite;
 }
+.animate-marquee {
+  animation: wave-drift 34s linear infinite;
+}
 
 @keyframes bob {
   0%,
